@@ -1,0 +1,9 @@
+.venv/
+.local/
+__pycache__/
+*.pyc
+media/
+db.sqlite3
+.DS_Store
+samples/*.elf
+docs/
