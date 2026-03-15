@@ -1,0 +1,45 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>myOS Run Lab</title>
+  <link rel="stylesheet" href="{% static 'jobs/dashboard.css' %}">
+  <script src="{% static 'jobs/dashboard.js' %}" defer></script>
+</head>
+<body>
+  <header class="masthead">
+    <a class="brand" href="/" aria-label="myOS Run Lab home">my<span>OS</span><small>Run Lab</small></a>
+    <nav aria-label="Navigation"><a href="/jobs">JSON API</a><a href="/admin/">Admin</a></nav>
+  </header>
+  <main>
+    <div class="intro"><h1>Your program.<br>A whole OS to run it.</h1><p>Upload an ELF file to boot myOS and run your program.<br>Follow each job from queue to completion, with results and serial logs.</p></div>
+    <div class="workspace">
+      <aside class="submit-panel" aria-labelledby="upload-heading">
+        <h2 id="upload-heading">Submit a program</h2>
+        <form id="upload-form" data-max-bytes="{{ max_binary_bytes }}">
+          <label class="file-label" for="binary">ELF file to run</label>
+          <input type="file" id="binary" name="binary" required aria-describedby="file-help">
+          <p class="hint" id="file-help">32-bit i386 ELF for myOS<br>Up to {{ max_binary_bytes }} bytes (24 KiB)</p>
+          <label class="check-label"><input type="checkbox" id="skip-validation">Skip ELF header validation</label>
+          <p class="hint">Use this to test malformed files in the myOS loader. The size limit still applies.</p>
+          <button class="primary" id="submit-button" type="submit">Add to queue</button>
+          <p id="upload-message" role="status" aria-live="polite"></p>
+        </form>
+        <div class="capacity"><h2>Execution slots</h2><div id="slots">Loading slots…</div><p class="hint">Each slot handles one job at a time.</p></div>
+        <p class="worker-note">If jobs stay queued, start a worker in your terminal: <code>python manage.py run_worker</code></p>
+      </aside>
+      <section class="runs" aria-labelledby="jobs-heading">
+        <div class="section-heading"><div><h2 id="jobs-heading">Run history</h2><p id="summary" class="hint">Loading jobs…</p></div><label class="filter-label">Status<select id="filter"><option value="">All</option><option value="queued">Queued</option><option value="running">Running</option><option value="success">Success</option><option value="failed">Failed</option><option value="crashed">Crashed</option><option value="timeout">Timed out</option></select></label></div>
+        <p id="connection" role="status" class="connection"></p>
+        <div class="table-scroll"><table><thead><tr><th>Job / file</th><th>Status</th><th>Slot</th><th>Submitted</th></tr></thead><tbody id="jobs-body"></tbody></table></div>
+        <p id="empty" class="empty" hidden>No jobs to show. Upload an ELF file or change the status filter.</p>
+        <section class="console" aria-labelledby="log-heading"><div class="console-heading"><h2 id="log-heading">Serial log</h2><span id="selected-status">Select a job</span></div><p id="detail" class="detail">Select a file name in the run history to view its results.</p><pre id="serial" tabindex="0" aria-label="Serial log for the selected job">No job selected yet.</pre></section>
+      </section>
+    </div>
+    <footer>myOS broker <span>Upload → Queue → QEMU → Results</span></footer>
+  </main>
+  <noscript>Enable JavaScript to upload files and view job status here. You can also use the /jobs API directly.</noscript>
+</body>
+</html>
