@@ -398,7 +398,7 @@ With MySQL running, it builds MyOS, then records two acts against the demo datab
 1. **Queue**: the web server and two `run_worker` processes start, eight samples are uploaded over HTTP, and each upload's response, the workers' log lines, and every job's slot, times, verdict and serial log are saved.
 2. **Race**: `test_concurrency.py` rounds in `unsafe` and `locked` mode with real QEMU, plus the SQL each claim function sends.
 
-`"dirty": true` in the output means it was recorded from uncommitted code; commit and record again before publishing. What the website builds from it is described in [demo/WEBSITE_HANDOFF.md](demo/WEBSITE_HANDOFF.md).
+`"dirty": true` in the output means it was recorded from uncommitted code; commit and record again before publishing.
 
 ## Troubleshooting
 

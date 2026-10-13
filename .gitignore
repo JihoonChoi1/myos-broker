@@ -7,3 +7,4 @@ db.sqlite3
 .DS_Store
 samples/*.elf
 docs/
+demo/WEBSITE_HANDOFF.md
