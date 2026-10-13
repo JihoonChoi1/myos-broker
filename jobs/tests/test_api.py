@@ -102,7 +102,7 @@ class ReadJobTests(TestCase):
         from jobs.models import Slot
 
         response = self.client.get("/")
-        self.assertContains(response, "myOS Run Lab")
+        self.assertContains(response, "MyOS Run Lab")
         self.assertContains(response, 'data-max-bytes="24576"')
         slot = Slot.objects.first()
         slot.status = Slot.Status.BUSY

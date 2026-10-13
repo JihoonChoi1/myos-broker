@@ -1,14 +1,14 @@
-# myOS Broker
+# MyOS Broker
 
-**A server that automatically runs uploaded myOS programs in a virtual machine and shows their results.**
+**A server that automatically runs uploaded MyOS programs in a virtual machine and shows their results.**
 
-[myOS](../my-os) is a 32-bit x86 operating system I built in C and Assembly. This project uses Python and Django to let users request and manage myOS program runs through the web.
+[MyOS](https://github.com/JihoonChoi1/my-os) is a 32-bit x86 operating system I built in C and Assembly. This project uses Python and Django to let users request and manage MyOS program runs through the web.
 
 This README covers what the project does, how to run it, and why its concurrency design looks the way it does. The website interface is in English.
 
 ## What does this project do?
 
-When a user submits an **ELF executable** built for myOS, the server processes it as follows:
+When a user submits an **ELF executable** built for MyOS, the server processes it as follows:
 
 ```text
 Upload file
@@ -16,7 +16,7 @@ Upload file
   → Store a job in the MySQL queue
   → Worker claims an available execution slot
   → Create a disk image for the job
-  → Boot myOS in QEMU and run the program
+  → Boot MyOS in QEMU and run the program
   → Classify the result as success, failure, crash, or timeout
   → Save the result and serial log
 ```
@@ -28,17 +28,17 @@ Common terms used in this README:
 | Django | Python web framework that handles requests and stores data in the database |
 | MySQL | Database that stores job states, execution slots, and results |
 | Worker (`run_worker`) | Separate process that picks up queued jobs and runs them |
-| QEMU | Program that provides the virtual machine used to boot myOS |
-| ELF | Binary file format that myOS can load and run |
+| QEMU | Program that provides the virtual machine used to boot MyOS |
+| ELF | Binary file format that MyOS can load and run |
 | Job (`Job`) | One file submission and its execution result |
 | Slot (`Slot`) | Permit that limits how many jobs can run at once |
-| Serial log | Record of output from myOS and the program while they run |
+| Serial log | Record of output from MyOS and the program while they run |
 
-**Django and Python do not run inside myOS.** Django and the worker run on a host OS such as macOS. Only the submitted ELF runs inside myOS in QEMU.
+**Django and Python do not run inside MyOS.** Django and the worker run on a host OS such as macOS. Only the submitted ELF runs inside MyOS in QEMU.
 
 ## Why use it?
 
-You do not need Django to boot myOS and run a program manually. This server is useful for:
+You do not need Django to boot MyOS and run a program manually. This server is useful for:
 
 - Automating the repeated work of preparing a disk and starting QEMU for each file
 - Keeping results and error logs for multiple programs
@@ -46,7 +46,7 @@ You do not need Django to boot myOS and run a program manually. This server is u
 - Coordinating workers so they do not run the same job twice
 - Seeing why database transactions and row locks matter in a working system
 
-This repository also includes a concurrency demo that compares execution with and without locks. The main purposes visible in the code are **automating myOS runs and learning and verifying database concurrency**. The code alone cannot establish any other personal motivation behind the project.
+This repository also includes a concurrency demo that compares execution with and without locks. The main purposes visible in the code are **automating MyOS runs and learning and verifying database concurrency**. The code alone cannot establish any other personal motivation behind the project.
 
 ## What needs to be running?
 
@@ -70,7 +70,7 @@ Run **this one command** in a terminal in the project directory:
 
 It automatically:
 
-1. Checks the required Python packages, myOS build artifacts, QEMU, and web port.
+1. Checks the required Python packages, MyOS build artifacts, QEMU, and web port.
 2. Opens Docker Desktop on macOS if it is not running.
 3. Starts the existing `myos-broker-mysql` container and waits for a database connection.
 4. Applies pending database migrations.
@@ -79,7 +79,7 @@ It automatically:
 
 **Keep this terminal open. Press `Ctrl+C` once to stop.** This stops only the web server and workers started by this command, giving active jobs time to finish. It leaves the MySQL container and Docker Desktop running. Existing job records and uploaded files are preserved. To stop the database too, run `docker stop myos-broker-mysql` after exiting. The next `./start.sh` will start it again.
 
-You must complete the one-time steps under **First-time setup** below to install Python packages, create the MySQL container, and build myOS. The start command reuses the prepared environment. The service cannot keep running while your Mac is asleep or off.
+You must complete the one-time steps under **First-time setup** below to install Python packages, create the MySQL container, and build MyOS. The start command reuses the prepared environment. The service cannot keep running while your Mac is asleep or off.
 
 Options:
 
@@ -104,9 +104,9 @@ Run these commands from the `myos-broker` directory for a local development envi
 
 - Python: runs Django and the workers
 - Docker Desktop: runs MySQL in the default setup
-- QEMU: runs the myOS virtual machine
+- QEMU: runs the MyOS virtual machine
 - A built `my-os` project: provides the kernel, shell, and disk creation tool
-- To rebuild myOS and the examples: `make`, NASM, `x86_64-elf-gcc` and its linker, and a host C compiler
+- To rebuild MyOS and the examples: `make`, NASM, `x86_64-elf-gcc` and its linker, and a host C compiler
 
 The Python version used to verify this project is **3.14.3**. Python package versions are pinned in [requirements.txt](requirements.txt).
 
@@ -147,9 +147,9 @@ python3 -m venv .venv
 
 `.venv` is a virtual environment that keeps this project's Python packages separate. `migrate` creates the database tables and the two default slots.
 
-### 4. Build myOS and the examples
+### 4. Build MyOS and the examples
 
-The default myOS path is `/Users/jihoonchoi/Desktop/my-os`. Set `MYOS_REPO` if it is elsewhere:
+The default MyOS path is `/Users/jihoonchoi/Desktop/my-os`. Set `MYOS_REPO` if it is elsewhere:
 
 ```sh
 export MYOS_REPO=/Users/jihoonchoi/Desktop/my-os
@@ -157,7 +157,7 @@ make -C "$MYOS_REPO" disk.img
 ./samples/build.sh
 ```
 
-The Broker uses myOS's `boot.bin`, `loader.bin`, `kernel.bin`, `mkfs`, shell, and default ELF build artifacts. **It does not recompile the kernel for each job.** It copies the existing artifacts and the submitted file to a temporary directory, then creates only a new disk image for that job.
+The Broker uses MyOS's `boot.bin`, `loader.bin`, `kernel.bin`, `mkfs`, shell, and default ELF build artifacts. **It does not recompile the kernel for each job.** It copies the existing artifacts and the submitted file to a temporary directory, then creates only a new disk image for that job.
 
 `mkfs` must be executable on the host running the Broker. An `mkfs` binary built on Linux cannot be assumed to run on macOS.
 
@@ -178,7 +178,7 @@ The page checks for status updates about every two seconds. **The serial log app
 | `running` | Has a slot and is preparing the disk, running the VM, or completing related work |
 | `success` | Program exited with code 0 |
 | `failed` | Program exited with a nonzero code, or the Broker encountered an execution error |
-| `crashed` | A myOS halt message was detected |
+| `crashed` | A MyOS halt message was detected |
 | `timeout` | No final classification was obtained within the time limit |
 
 `success` means the program exited normally. The Broker does not grade whether its output matches an expected answer.
@@ -226,18 +226,18 @@ curl http://127.0.0.1:8000/slots
 | `corrupt.elf` | HTTP 400 with default submission | Invalid ELF format is rejected |
 | `too_big.elf` | HTTP 400 | File size limit |
 
-To pass an invalid ELF to the myOS loader and observe its error, you can skip only the header check:
+To pass an invalid ELF to the MyOS loader and observe its error, you can skip only the header check:
 
 ```sh
 curl -F binary=@samples/corrupt.elf \
   'http://127.0.0.1:8000/jobs?validate=false'
 ```
 
-In this case, the myOS ELF loader rejects `corrupt.elf`, and the job result is `failed` with exit code 1. The website's **Skip ELF header validation** option does the same thing.
+In this case, the MyOS ELF loader rejects `corrupt.elf`, and the job result is `failed` with exit code 1. The website's **Skip ELF header validation** option does the same thing.
 
 ### Why is the file size limit 24 KiB?
 
-myOS SimpleFS supports 48 data blocks per file, with 512 bytes per block:
+MyOS SimpleFS supports 48 data blocks per file, with 512 bytes per block:
 
 ```text
 48 × 512 = 24,576 bytes = 24 KiB
@@ -245,7 +245,7 @@ myOS SimpleFS supports 48 data blocks per file, with 512 bytes per block:
 
 The current `mkfs` does not sufficiently check array bounds for file sizes, so the Broker enforces this limit first. **Empty files and files larger than 24 KiB are rejected even with `validate=false`.** When the Runner is called directly, it also checks the sizes of the submitted file and the default kernel and ELF artifacts.
 
-The basic header check verifies the ELF magic bytes, 32-bit little-endian format, and i386 target. Passing this check does not mean an arbitrary ELF will run correctly or safely on myOS. It also needs compatible myOS libraries and system call conventions.
+The basic header check verifies the ELF magic bytes, 32-bit little-endian format, and i386 target. Passing this check does not mean an arbitrary ELF will run correctly or safely on MyOS. It also needs compatible MyOS libraries and system call conventions.
 
 ## How are execution results classified?
 
@@ -253,14 +253,14 @@ The basic header check verifies the ELF magic bytes, 32-bit little-endian format
 
 - The shell's `Child exited with code: N` line indicates that the child program has finished. Only a complete line counts.
 - The exit code comes from the last kernel line `[proc] PID N exited with code X` before that message. This avoids mistaking the log of an earlier exiting thread for the program's result. If the shell's number disagrees with the kernel's, the job is `failed` and `detail` says so.
-- Logs from myOS builds before its tagged boot log (`[Kernel] Process N exited with code X.` and a bare `Child exited with code:`) are still recognized.
+- Logs from MyOS builds before its tagged boot log (`[Kernel] Process N exited with code X.` and a bare `Child exited with code:`) are still recognized.
 - `System Halted.` is classified as `crashed`, including a halt during boot.
 - If no result can be determined within the time limit, the job is classified as `timeout`.
 - Infrastructure errors such as an `mkfs` failure or a missing QEMU executable are recorded as `failed`, with `detail` beginning with `broker error:` to distinguish them.
 
 The default QEMU time limit is **3 seconds, including boot time**. The `mkfs` disk creation tool has a separate 30-second limit. Therefore, the total time from submission to stored result is not necessarily under 3 seconds.
 
-The myOS shell keeps running after a program exits, so the Runner stops QEMU after obtaining the result. The program's exit code and QEMU's own exit code are different values.
+The MyOS shell keeps running after a program exits, so the Runner stops QEMU after obtaining the result. The program's exit code and QEMU's own exit code are different values.
 
 ## Preventing duplicate runs under concurrent requests
 
@@ -344,7 +344,7 @@ These execution intervals include disk preparation and result storage. They are 
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `MYOS_REPO` | `/Users/jihoonchoi/Desktop/my-os` | Location of myOS build artifacts |
+| `MYOS_REPO` | `/Users/jihoonchoi/Desktop/my-os` | Location of MyOS build artifacts |
 | `QEMU_BINARY` | `qemu-system-x86_64` | QEMU executable |
 | `JOB_TIMEOUT_SECONDS` | `3.0` | QEMU boot and execution time limit |
 | `MYSQL_HOST` | `127.0.0.1` | MySQL host |
@@ -393,7 +393,7 @@ The personal website shows this project as a replay of a real session, not a liv
 .venv/bin/python demo/capture_demo.py        # -> demo/transcript.json, about 30 seconds
 ```
 
-With MySQL running, it builds myOS, then records two acts against the demo database (`myos_broker_demo`, wiped) and `media/demo/`:
+With MySQL running, it builds MyOS, then records two acts against the demo database (`myos_broker_demo`, wiped) and `media/demo/`:
 
 1. **Queue**: the web server and two `run_worker` processes start, eight samples are uploaded over HTTP, and each upload's response, the workers' log lines, and every job's slot, times, verdict and serial log are saved.
 2. **Race**: `test_concurrency.py` rounds in `unsafe` and `locked` mode with real QEMU, plus the SQL each claim function sends.
@@ -409,7 +409,7 @@ With MySQL running, it builds myOS, then records two acts against the demo datab
 | `Already running via ./start.sh` | Use the existing terminal, or stop it with `Ctrl+C` before restarting; there is no need to delete the lock file manually |
 | `Port 8000 is unavailable` | Run `./start.sh --port 8001` or stop the existing web server |
 | No slots available | Check that `manage.py migrate` has run |
-| Missing myOS artifact error | Check `MYOS_REPO` and the result of `make disk.img` |
+| Missing MyOS artifact error | Check `MYOS_REPO` and the result of `make disk.img` |
 | Cannot start QEMU | Check its installation and the `QEMU_BINARY` path |
 | `running` with an empty log | Logs are saved after a job finishes in the current design |
 | ELF upload rejected | Check that it is 32-bit little-endian i386 and no larger than 24 KiB |

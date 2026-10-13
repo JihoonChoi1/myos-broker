@@ -4,26 +4,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>myOS Run Lab</title>
+  <title>MyOS Run Lab</title>
   <link rel="stylesheet" href="{% static 'jobs/dashboard.css' %}">
   <script src="{% static 'jobs/dashboard.js' %}" defer></script>
 </head>
 <body>
   <header class="masthead">
-    <a class="brand" href="/" aria-label="myOS Run Lab home">my<span>OS</span><small>Run Lab</small></a>
+    <a class="brand" href="/" aria-label="MyOS Run Lab home">My<span>OS</span><small>Run Lab</small></a>
     <nav aria-label="Navigation"><a href="/jobs">JSON API</a><a href="/admin/">Admin</a></nav>
   </header>
   <main>
-    <div class="intro"><h1>Your program.<br>A whole OS to run it.</h1><p>Upload an ELF file to boot myOS and run your program. <br>Follow each job from queue to completion, with results and serial logs.</p></div>
+    <div class="intro"><h1>Your program.<br>A whole OS to run it.</h1><p>Upload an ELF file to boot MyOS and run your program. <br>Follow each job from queue to completion, with results and serial logs.</p></div>
     <div class="workspace">
       <aside class="submit-panel" aria-labelledby="upload-heading">
         <h2 id="upload-heading">Submit a program</h2>
         <form id="upload-form" data-max-bytes="{{ max_binary_bytes }}">
           <label class="file-label" for="binary">ELF file to run</label>
           <input type="file" id="binary" name="binary" required aria-describedby="file-help">
-          <p class="hint" id="file-help">32-bit i386 ELF for myOS<br>Up to {{ max_binary_bytes }} bytes (24 KiB)</p>
+          <p class="hint" id="file-help">32-bit i386 ELF for MyOS<br>Up to {{ max_binary_bytes }} bytes (24 KiB)</p>
           <label class="check-label"><input type="checkbox" id="skip-validation">Skip ELF header validation</label>
-          <p class="hint">Use this to test malformed files in the myOS loader. The size limit still applies.</p>
+          <p class="hint">Use this to test malformed files in the MyOS loader. The size limit still applies.</p>
           <button class="primary" id="submit-button" type="submit">Add to queue</button>
           <p id="upload-message" role="status" aria-live="polite"></p>
         </form>
@@ -38,7 +38,7 @@
         <section class="console" aria-labelledby="log-heading"><div class="console-heading"><h2 id="log-heading">Serial log</h2><span id="selected-status">Select a job</span></div><p id="detail" class="detail">Select a file name in the run history to view its results.</p><pre id="serial" tabindex="0" aria-label="Serial log for the selected job">No job selected yet.</pre></section>
       </section>
     </div>
-    <footer>myOS broker <span>Upload → Queue → QEMU → Results</span></footer>
+    <footer>MyOS Broker <span>Upload → Queue → QEMU → Results</span></footer>
   </main>
   <noscript>Enable JavaScript to upload files and view job status here. You can also use the /jobs API directly.</noscript>
 </body>

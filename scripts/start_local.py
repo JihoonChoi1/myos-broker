@@ -20,7 +20,7 @@ CHILDREN = []
 
 
 def say(message):
-    print(f"[myOS] {message}", flush=True)
+    print(f"[MyOS] {message}", flush=True)
 
 
 def capture(*args):
@@ -159,7 +159,7 @@ def main():
         grace = max(45, settings.JOB_TIMEOUT_SECONDS + 40)
         check_artifacts(Path(settings.MYOS_REPO))
         if not os.access(Path(settings.MYOS_REPO) / "mkfs", os.X_OK):
-            raise RuntimeError("myOS mkfs is not executable. Rebuild myOS for this host.")
+            raise RuntimeError("MyOS mkfs is not executable. Rebuild MyOS for this host.")
         if not shutil.which(settings.QEMU_BINARY):
             raise RuntimeError("QEMU was not found. Install it or set QEMU_BINARY.")
         with socket.socket() as probe:
