@@ -382,7 +382,7 @@ Stop 1이나 Stop 2 카드에 작은 그림. 세 단계 중 DB 트랜잭션은 �
   summary: 'A job queue that runs uploaded programs on MyOS in QEMU',   // ≤ 70자
   year: 2026, period: { start: '2026-03', end: '2026-03' },          // 커밋 기준 2026-03-07 ~ 03-29
   role: 'Solo developer',
-  status: 'archived',               // TODO(me): MyOS 카드와 같은 기준으로 사용자 확인
+  status: 'archived',               // 사용자 확인(2026-10-12): 완성된 프로젝트
   tags: ['backend'],                // + 'systems' (MyOS 핸드오프가 추가하면)
   stack: ['Python', 'Django', 'MySQL (InnoDB)', 'QEMU', 'Docker'],
   cover: null, gallery: [],         // 대시보드 스크린샷을 쓰려면 content-src/projects/myos-broker/에 넣고 npm run images
@@ -403,11 +403,12 @@ Stop 1이나 Stop 2 카드에 작은 그림. 세 단계 중 DB 트랜잭션은 �
     { kind: 'github', url: 'https://github.com/JihoonChoi1/myos-broker' },
     { kind: 'demo', url: /* the MyOS Broker demo app */ },
   ],
-  featured: false,                  // TODO(me): 사용자 확인
+  featured: true,                   // 사용자 확인(2026-10-12): MyOS와 둘 다 대표 프로젝트
 },
 ```
 
 - `result`와 `highlights`의 숫자(4 VMs)는 현재 transcript 기준이다. 재캡처 후 `peak`가 달라지면 같이 고친다.
+- 표기는 **MyOS**(대문자 M)다. Broker 저장소도 2026-10-12에 `myOS` → `MyOS`로 맞췄다. 프로젝트는 MyOS와 **별개의 카드, 별개의 데모 앱**이다.
 - 근거: README "Preventing duplicate runs", `jobs/scheduler.py` docstring, 이 transcript.
 
 ---
