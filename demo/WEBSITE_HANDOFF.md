@@ -60,7 +60,7 @@ MyOS VM에서 하나씩 실행하는 과정**을 보고, 이어서 **행 잠금 
 **파일 위치** (이 문서만 받았다면 여기서 가져온다):
 - 같은 Mac: `~/Desktop/myos-broker/demo/transcript.json` (Broker 저장소 루트는 `~/Desktop/myos-broker`)
 - 그 밖의 환경: https://raw.githubusercontent.com/JihoonChoi1/myos-broker/master/demo/transcript.json
-  (기본 브랜치는 `master`다. 2026-10-12 현재 아직 커밋/push 전이라 이 URL은 404다.)
+  (기본 브랜치는 `master`다. 2026-10-12 현재 커밋은 했지만 push 전이라 이 URL은 404다.)
 - 둘 다 접근할 수 없으면 추측하거나 지어내지 말고 사용자에게 파일을 달라고 요청한다.
 - 받은 파일의 `dirty`와 `myos_dirty`가 둘 다 `false`인지 먼저 확인한다(§3.1).
 
@@ -79,10 +79,9 @@ docker start myos-broker-mysql          # MySQL (Docker Desktop이 켜져 있어
 - 필요한 것: Docker의 MySQL 컨테이너, QEMU, 빌드된 MyOS(`~/Desktop/my-os`), `samples/*.elf`(`./samples/build.sh`). 이 Mac에는 다 있다.
 - 스크립트는 MyOS를 `make disk.img`로 빌드하고, 데모 전용 DB(`myos_broker_demo`, 매번 비운다)와 `media/demo/`만 쓴다.
   사용자의 실제 작업 기록은 건드리지 않는다.
-- **배포 전 확인**: `"dirty": false`, `"myos_dirty": false`이고, `"commit"`이 Broker의 최신 커밋이어야 한다.
+- **배포 전 확인**: `"dirty": false`, `"myos_dirty": false`이고, `"commit"`은 녹화한 코드의 커밋이다. 그 뒤에 transcript나 문서만 바꾼 커밋이 있는 것은 괜찮다(MyOS 데모와 같다).
   `dirty: true`이면 커밋되지 않은 코드로 찍은 것이니 커밋 후 다시 캡처한다.
-  - 현재 파일: `commit: b8c8fd8, dirty: true`(분류기 수정이 아직 커밋 전), MyOS `7229d04`, 2026-10-13 00:17 UTC 캡처, QEMU 11.1.2, MySQL 8.4.11.
-    **이 상태로는 배포하지 않는다.** 사용자가 커밋한 뒤 다시 캡처한다.
+  - 현재 파일: `commit: aff6342, dirty: false`, MyOS `7229d04`(`myos_dirty: false`), 2026-10-13 00:29 UTC 캡처, QEMU 11.1.2, MySQL 8.4.11.
 - 재캡처할 때마다 슬롯 배정, 시각, 경쟁 결과 수치가 조금씩 바뀐다. 문구와 그림은 **값을 transcript에서 읽고**, 하드코딩하지 않는다.
 
 ### 3.2 스키마
@@ -90,7 +89,7 @@ docker start myos-broker-mysql          # MySQL (Docker Desktop이 켜져 있어
 ```jsonc
 {
   "captured_at": "2026-10-13T00:17:29+00:00",  // UTC
-  "commit": "b8c8fd8", "dirty": true,          // Broker. dirty면 배포 금지
+  "commit": "aff6342", "dirty": false,         // Broker. dirty면 배포 금지
   "myos_commit": "7229d04", "myos_dirty": false,  // 작업이 실제로 부팅한 MyOS 빌드
   "versions": { "python": "3.14.8", "django": "6.1.1", "mysql": "8.4.11", "qemu": "QEMU emulator version 11.1.2" },
 
@@ -183,7 +182,7 @@ docker start myos-broker-mysql          # MySQL (Docker Desktop이 켜져 있어
 | 같은 슬롯 중복 claim (라운드당) | 6 | 0 |
 | **DB가 본 바쁜 슬롯 최대** | **2** | 2 |
 
-- unsafe 1라운드: 0.02초 안에 W1~W4가 모두 `job 1 on slot 1`을 시작한다. 작업 1이 4번 돈다.
+- unsafe 1라운드: 0.01초 안에 W1~W4가 모두 `job 1 on slot 1`을 시작한다. 작업 1이 4번 돈다.
 - 마지막 행이 핵심이다. Slot 행이 2개뿐이라 DB는 잘못된 구현에서도 "바쁜 슬롯 2"로 보인다. 워커가 스스로 남긴 시각만이 경쟁을 드러낸다.
 
 ---
@@ -284,7 +283,7 @@ docker start myos-broker-mysql          # MySQL (Docker Desktop이 켜져 있어
 - Title: `Four workers, one job, same instant`
 - What just happened:
   `This claim reads a free slot and a queued job, then writes busy, inside a transaction but without a lock. A plain SELECT doesn't block anyone, so all four workers read slot 1 as idle and job 1 as queued before any of them wrote. Each believes it owns them. Job 1 ran four times at once. The slots table only has two rows, so it never showed more than two busy slots: the database looked fine the whole time.`
-- 문구의 `four workers`, `slot 1`, `job 1`, `four times`는 현재 캡처의 1라운드 값이다(0.02초 안에 W1~W4가 모두 job 1 on slot 1).
+- 문구의 `four workers`, `slot 1`, `job 1`, `four times`는 현재 캡처의 1라운드 값이다(0.01초 안에 W1~W4가 모두 job 1 on slot 1).
   재캡처 후 1라운드가 다르면 문구를 그 값에 맞춘다. 숫자는 가능하면 transcript에서 채운다.
 - `sql.claim_unsafe`의 두 SELECT를 코드 블록으로 보여준다(`FOR UPDATE`가 없다는 것이 보이게).
 - 라운드 요약(작게): `Rounds with a violation: 3/3` ← unsafe 라운드 중 `violated` 개수
@@ -360,7 +359,7 @@ Stop 1이나 Stop 2 카드에 작은 그림. 세 단계 중 DB 트랜잭션은 �
 
 데모 창 하단에 항상 보이게 둔다.
 
-`Recorded from a real run: Django, MySQL 8.4, two workers, QEMU · commit b8c8fd8 · captured 2026-10-13 · Run it yourself: github.com/JihoonChoi1/myos-broker`
+`Recorded from a real run: Django, MySQL 8.4, two workers, QEMU · commit aff6342 · captured 2026-10-13 · Run it yourself: github.com/JihoonChoi1/myos-broker`
 
 - `commit`, 날짜, MySQL 버전은 transcript의 `commit`, `captured_at`, `versions.mysql`에서 읽는다. 하드코딩하지 않는다.
 - commit은 `https://github.com/JihoonChoi1/myos-broker/commit/<commit>` 링크로 만든다(push된 뒤에만 열린다).

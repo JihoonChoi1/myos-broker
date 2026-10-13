@@ -1,6 +1,6 @@
 {
- "captured_at": "2026-10-13T00:22:46+00:00",
- "commit": "02a6202",
+ "captured_at": "2026-10-13T00:29:25+00:00",
+ "commit": "aff6342",
  "dirty": false,
  "myos_commit": "7229d04",
  "myos_dirty": false,
@@ -21,7 +21,7 @@
   "submissions": [
    {
     "t": 0.0,
-    "t_response": 0.05,
+    "t_response": 0.029,
     "file": "hello.elf",
     "bytes": 10712,
     "request": "POST /jobs",
@@ -33,14 +33,14 @@
      "detail": "",
      "binary": "hello.elf",
      "slot": null,
-     "created_at": "2026-10-13T00:22:27.424256+00:00",
+     "created_at": "2026-10-13T00:29:06.619193+00:00",
      "started_at": null,
      "finished_at": null
     }
    },
    {
-    "t": 0.206,
-    "t_response": 0.258,
+    "t": 0.184,
+    "t_response": 0.236,
     "file": "producer_consumer.elf",
     "bytes": 13712,
     "request": "POST /jobs",
@@ -52,14 +52,14 @@
      "detail": "",
      "binary": "producer_consumer.elf",
      "slot": null,
-     "created_at": "2026-10-13T00:22:27.634228+00:00",
+     "created_at": "2026-10-13T00:29:06.825000+00:00",
      "started_at": null,
      "finished_at": null
     }
    },
    {
-    "t": 0.414,
-    "t_response": 0.516,
+    "t": 0.39,
+    "t_response": 0.457,
     "file": "fail.elf",
     "bytes": 10712,
     "request": "POST /jobs",
@@ -71,14 +71,14 @@
      "detail": "",
      "binary": "fail.elf",
      "slot": null,
-     "created_at": "2026-10-13T00:22:27.888160+00:00",
+     "created_at": "2026-10-13T00:29:07.045173+00:00",
      "started_at": null,
      "finished_at": null
     }
    },
    {
-    "t": 0.67,
-    "t_response": 0.723,
+    "t": 0.608,
+    "t_response": 0.651,
     "file": "crash.elf",
     "bytes": 10732,
     "request": "POST /jobs",
@@ -90,14 +90,14 @@
      "detail": "",
      "binary": "crash.elf",
      "slot": null,
-     "created_at": "2026-10-13T00:22:28.097703+00:00",
+     "created_at": "2026-10-13T00:29:07.240871+00:00",
      "started_at": null,
      "finished_at": null
     }
    },
    {
-    "t": 0.879,
-    "t_response": 0.941,
+    "t": 0.807,
+    "t_response": 0.85,
     "file": "spin.elf",
     "bytes": 10660,
     "request": "POST /jobs",
@@ -109,14 +109,14 @@
      "detail": "",
      "binary": "spin.elf",
      "slot": null,
-     "created_at": "2026-10-13T00:22:28.315609+00:00",
+     "created_at": "2026-10-13T00:29:07.437670+00:00",
      "started_at": null,
      "finished_at": null
     }
    },
    {
-    "t": 1.096,
-    "t_response": 1.159,
+    "t": 1.002,
+    "t_response": 1.039,
     "file": "corrupt.elf",
     "bytes": 10712,
     "request": "POST /jobs?validate=false",
@@ -128,14 +128,14 @@
      "detail": "",
      "binary": "corrupt.elf",
      "slot": null,
-     "created_at": "2026-10-13T00:22:28.532661+00:00",
+     "created_at": "2026-10-13T00:29:07.628355+00:00",
      "started_at": null,
      "finished_at": null
     }
    },
    {
-    "t": 1.31,
-    "t_response": 1.312,
+    "t": 1.194,
+    "t_response": 1.196,
     "file": "corrupt.elf",
     "bytes": 10712,
     "request": "POST /jobs",
@@ -148,8 +148,8 @@
     }
    },
    {
-    "t": 1.467,
-    "t_response": 1.469,
+    "t": 1.351,
+    "t_response": 1.353,
     "file": "too_big.elf",
     "bytes": 24577,
     "request": "POST /jobs",
@@ -164,88 +164,88 @@
   ],
   "worker_log": [
    {
-    "t": 0.504,
-    "worker": "W2",
-    "level": "INFO",
-    "logger": "jobs.worker",
-    "message": "claimed job 1 on slot 1"
-   },
-   {
-    "t": 0.505,
+    "t": 0.514,
     "worker": "W1",
     "level": "INFO",
     "logger": "jobs.worker",
-    "message": "claimed job 2 on slot 2"
+    "message": "claimed job 1 on slot 2"
    },
    {
-    "t": 1.316,
-    "worker": "W2",
-    "level": "INFO",
-    "logger": "jobs.scheduler",
-    "message": "job 1 on slot 1: success (process 2 exited with code 0, 0.31s)"
-   },
-   {
-    "t": 1.36,
+    "t": 0.515,
     "worker": "W2",
     "level": "INFO",
     "logger": "jobs.worker",
-    "message": "claimed job 3 on slot 1"
+    "message": "claimed job 2 on slot 1"
    },
    {
-    "t": 1.616,
+    "t": 1.146,
     "worker": "W1",
     "level": "INFO",
     "logger": "jobs.scheduler",
-    "message": "job 2 on slot 2: success (process 2 exited with code 0, 0.47s)"
+    "message": "job 1 on slot 2: success (process 2 exited with code 0, 0.17s)"
    },
    {
-    "t": 1.651,
-    "worker": "W1",
-    "level": "INFO",
-    "logger": "jobs.worker",
-    "message": "claimed job 4 on slot 2"
-   },
-   {
-    "t": 1.731,
-    "worker": "W2",
-    "level": "INFO",
-    "logger": "jobs.scheduler",
-    "message": "job 3 on slot 1: failed (process 2 exited with code 3, 0.19s)"
-   },
-   {
-    "t": 1.764,
-    "worker": "W2",
-    "level": "INFO",
-    "logger": "jobs.worker",
-    "message": "claimed job 5 on slot 1"
-   },
-   {
-    "t": 2.134,
-    "worker": "W1",
-    "level": "INFO",
-    "logger": "jobs.scheduler",
-    "message": "job 4 on slot 2: crashed (kernel halted: Page Fault, 0.19s)"
-   },
-   {
-    "t": 2.169,
+    "t": 1.176,
     "worker": "W1",
     "level": "INFO",
     "logger": "jobs.worker",
-    "message": "claimed job 6 on slot 2"
+    "message": "claimed job 3 on slot 2"
    },
    {
-    "t": 2.681,
-    "worker": "W1",
-    "level": "INFO",
-    "logger": "jobs.scheduler",
-    "message": "job 6 on slot 2: failed (process 2 exited with code 1 (ELF loader: Invalid ELF Magic.), 0.20s)"
-   },
-   {
-    "t": 5.092,
+    "t": 1.289,
     "worker": "W2",
     "level": "INFO",
     "logger": "jobs.scheduler",
-    "message": "job 5 on slot 1: timeout (no verdict within 3.0s (while running the job), 3.02s)"
+    "message": "job 2 on slot 1: success (process 2 exited with code 0, 0.44s)"
+   },
+   {
+    "t": 1.32,
+    "worker": "W2",
+    "level": "INFO",
+    "logger": "jobs.worker",
+    "message": "claimed job 4 on slot 1"
+   },
+   {
+    "t": 1.504,
+    "worker": "W1",
+    "level": "INFO",
+    "logger": "jobs.scheduler",
+    "message": "job 3 on slot 2: failed (process 2 exited with code 3, 0.17s)"
+   },
+   {
+    "t": 1.534,
+    "worker": "W1",
+    "level": "INFO",
+    "logger": "jobs.worker",
+    "message": "claimed job 5 on slot 2"
+   },
+   {
+    "t": 1.663,
+    "worker": "W2",
+    "level": "INFO",
+    "logger": "jobs.scheduler",
+    "message": "job 4 on slot 1: crashed (kernel halted: Page Fault, 0.19s)"
+   },
+   {
+    "t": 1.691,
+    "worker": "W2",
+    "level": "INFO",
+    "logger": "jobs.worker",
+    "message": "claimed job 6 on slot 1"
+   },
+   {
+    "t": 2.042,
+    "worker": "W2",
+    "level": "INFO",
+    "logger": "jobs.scheduler",
+    "message": "job 6 on slot 1: failed (process 2 exited with code 1 (ELF loader: Invalid ELF Magic.), 0.17s)"
+   },
+   {
+    "t": 4.77,
+    "worker": "W1",
+    "level": "INFO",
+    "logger": "jobs.scheduler",
+    "message": "job 5 on slot 2: timeout (no verdict within 3.0s (while running the job), 3.02s)"
    }
   ],
   "jobs": [
@@ -255,14 +255,14 @@
     "exit_code": 0,
     "detail": "process 2 exited with code 0",
     "binary": "hello.elf",
-    "slot": 1,
-    "created_at": "2026-10-13T00:22:27.424256+00:00",
-    "started_at": "2026-10-13T00:22:27.871515+00:00",
-    "finished_at": "2026-10-13T00:22:28.699402+00:00",
+    "slot": 2,
+    "created_at": "2026-10-13T00:29:06.619193+00:00",
+    "started_at": "2026-10-13T00:29:07.101826+00:00",
+    "finished_at": "2026-10-13T00:29:07.743644+00:00",
     "serial_log": "MyOS - a 32-bit x86 kernel built from scratch\n[boot] Kernel entered at 0xC0100CEA (higher half, loaded at 0x100000)\n[cpu ] PIC remapped: IRQ 0-15 -> INT 32-47\n[cpu ] IDT loaded: #DE, #PF, timer, keyboard, syscall gate INT 0x80\n[cpu ] GDT and TSS loaded: Ring 0 kernel, Ring 3 user segments\n[pit ] Timer at 50 Hz: each tick preempts into the scheduler\n[vmm ] Direct-mapped physical 0-128 MB at 0xC0000000\n[vmm ] VGA text buffer mapped at 0xC00B8000\n[pmm ] BIOS E820 memory map: 7 entries\n[pmm ] RAM: 127 MB = 32736 frames of 4 KB, tracked in a bitmap\n[pmm ] Reserved frames 0x0 - 0x176000: BIOS area and kernel image\n[pmm ] Reserved frames 0x7FDC000 - 0x7FE0000: kernel stack\n[pmm ] Free: 32358 frames\n[pmm ] Self-test: allocated frame 0x176000, freed it\n[heap] Kernel heap at 0xC0176000, 1 MB, doubly linked free list\n[heap] Self-test: 3 freed blocks coalesced into one\n[ata ] Read sector 0 over PIO: boot signature 0x55 0xAA\n[fs  ] SimpleFS mounted: 20480 blocks\n[proc] Multitasking on: the kernel itself is PID 0 (idle)\n[proc] Created PID 1\n[proc] PID 1: loading the user shell, then IRET to Ring 3\n[elf ] Loading shell.elf\n[elf ] Segment at 0x400000: 0x800 bytes from disk, 0x800 in memory\n[elf ] Entry point: 0x400000\nWelcome to User Land Shell!\nType 'help' for commands.\n> exec hello.elf\n[cow ] Write to shared page 0xF00000: copied frame 0x279000 -> 0x27E000\nExecuting: hello.elf\n[elf ] Loading hello.elf\n[elf ] Segment at 0x400000: 0x50C bytes from disk, 0x50C in memory\n[cow ] Write to shared page 0x400000: copied frame 0x277000 -> 0x27F000\n[elf ] Entry point: 0x400000\nHello from User Space! (Ring 3)\nThis is a real C program loaded from disk.\n[proc] PID 2 exited with code 0\nChild exited with code: 0\n> ",
-    "t_created": 0.046,
-    "t_started": 0.493,
-    "t_finished": 1.321
+    "t_created": 0.027,
+    "t_started": 0.51,
+    "t_finished": 1.152
    },
    {
     "id": 2,
@@ -270,14 +270,14 @@
     "exit_code": 0,
     "detail": "process 2 exited with code 0",
     "binary": "producer_consumer.elf",
-    "slot": 2,
-    "created_at": "2026-10-13T00:22:27.634228+00:00",
-    "started_at": "2026-10-13T00:22:27.873136+00:00",
-    "finished_at": "2026-10-13T00:22:29.003048+00:00",
-    "serial_log": "MyOS - a 32-bit x86 kernel built from scratch\n[boot] Kernel entered at 0xC0100CEA (higher half, loaded at 0x100000)\n[cpu ] PIC remapped: IRQ 0-15 -> INT 32-47\n[cpu ] IDT loaded: #DE, #PF, timer, keyboard, syscall gate INT 0x80\n[cpu ] GDT and TSS loaded: Ring 0 kernel, Ring 3 user segments\n[pit ] Timer at 50 Hz: each tick preempts into the scheduler\n[vmm ] Direct-mapped physical 0-128 MB at 0xC0000000\n[vmm ] VGA text buffer mapped at 0xC00B8000\n[pmm ] BIOS E820 memory map: 7 entries\n[pmm ] RAM: 127 MB = 32736 frames of 4 KB, tracked in a bitmap\n[pmm ] Reserved frames 0x0 - 0x176000: BIOS area and kernel image\n[pmm ] Reserved frames 0x7FDC000 - 0x7FE0000: kernel stack\n[pmm ] Free: 32358 frames\n[pmm ] Self-test: allocated frame 0x176000, freed it\n[heap] Kernel heap at 0xC0176000, 1 MB, doubly linked free list\n[heap] Self-test: 3 freed blocks coalesced into one\n[ata ] Read sector 0 over PIO: boot signature 0x55 0xAA\n[fs  ] SimpleFS mounted: 20480 blocks\n[proc] Multitasking on: the kernel itself is PID 0 (idle)\n[proc] Created PID 1\n[proc] PID 1: loading the user shell, then IRET to Ring 3\n[elf ] Loading shell.elf\n[elf ] Segment at 0x400000: 0x800 bytes from disk, 0x800 in memory\n[elf ] Entry point: 0x400000\nWelcome to User Land Shell!\nType 'help' for commands.\n> exec hello.elf\n[cow ] Write to shared page 0xF00000: copied frame 0x279000 -> 0x27E000\nExecuting: hello.elf\n[elf ] Loading hello.elf\n[elf ] Segment at 0x400000: 0x983 bytes from disk, 0x69E0 in memory\n[cow ] Write to shared page 0x400000: copied frame 0x277000 -> 0x285000\n[elf ] Entry point: 0x40024C\n=== Producer-Consumer Demo (2P / 4C) ===\nBuffer: 5 | Producers: 2x10 | Consumers: 4x5 | Total: 20 items\n-----------------------------------------\n[P1] Produced: 100\n[P1] Produced: 101\n[P1] Produced: 102\n[P1] Produced: 103\n[P1] Produced: 104\n  [C1] Consumed: 100\n  [C1] Consumed: 101\n  [C2] Consumed: 102\n  [C3] Consumed: 103\n  [C4] Consumed: 104\n[P1] Produced: 105\n[P1] Produced: 106\n[P1] Produced: 107\n[P1] Produced: 108\n[P2] Produced: 200\n  [C1] Consumed: 105\n  [C1] Consumed: 106\n  [C2] Consumed: 107\n  [C3] Consumed: 108\n  [C4] Consumed: 200\n[P1] Produced: 109\n[P1] Done.\n[proc] PID 3 exited with code 0\n[P2] Produced: 201\n[P2] Produced: 202\n[P2] Produced: 203\n[P2] Produced: 204\n  [C1] Consumed: 109\n  [C1] Done.\n[proc] PID 5 exited with code 0\n  [C3] Consumed: 201\n  [C3] Consumed: 202\n  [C4] Consumed: 203\n[P2] Produced: 205\n[P2] Produced: 206\n[P2] Produced: 207\n[P2] Produced: 208\n  [C2] Consumed: 204\n  [C2] Consumed: 205\n  [C2] Consumed: 206\n  [C2] Done.\n[proc] PID 6 exited with code 0\n  [C3] Consumed: 207\n  [C3] Done.\n[proc] PID 7 exited with code 0\n  [C4] Consumed: 208\n[P2] Produced: 209\n[P2] Done.\n[proc] PID 4 exited with code 0\n  [C4] Consumed: 209\n  [C4] Done.\n[proc] PID 8 exited with code 0\n-----------------------------------------\n=== All threads finished. 20/20 items ===\n[proc] PID 2 exited with code 0\nChild exited with code: 0\n> ",
-    "t_created": 0.256,
-    "t_started": 0.495,
-    "t_finished": 1.625
+    "slot": 1,
+    "created_at": "2026-10-13T00:29:06.825000+00:00",
+    "started_at": "2026-10-13T00:29:07.101744+00:00",
+    "finished_at": "2026-10-13T00:29:07.885179+00:00",
+    "serial_log": "MyOS - a 32-bit x86 kernel built from scratch\n[boot] Kernel entered at 0xC0100CEA (higher half, loaded at 0x100000)\n[cpu ] PIC remapped: IRQ 0-15 -> INT 32-47\n[cpu ] IDT loaded: #DE, #PF, timer, keyboard, syscall gate INT 0x80\n[cpu ] GDT and TSS loaded: Ring 0 kernel, Ring 3 user segments\n[pit ] Timer at 50 Hz: each tick preempts into the scheduler\n[vmm ] Direct-mapped physical 0-128 MB at 0xC0000000\n[vmm ] VGA text buffer mapped at 0xC00B8000\n[pmm ] BIOS E820 memory map: 7 entries\n[pmm ] RAM: 127 MB = 32736 frames of 4 KB, tracked in a bitmap\n[pmm ] Reserved frames 0x0 - 0x176000: BIOS area and kernel image\n[pmm ] Reserved frames 0x7FDC000 - 0x7FE0000: kernel stack\n[pmm ] Free: 32358 frames\n[pmm ] Self-test: allocated frame 0x176000, freed it\n[heap] Kernel heap at 0xC0176000, 1 MB, doubly linked free list\n[heap] Self-test: 3 freed blocks coalesced into one\n[ata ] Read sector 0 over PIO: boot signature 0x55 0xAA\n[fs  ] SimpleFS mounted: 20480 blocks\n[proc] Multitasking on: the kernel itself is PID 0 (idle)\n[proc] Created PID 1\n[proc] PID 1: loading the user shell, then IRET to Ring 3\n[elf ] Loading shell.elf\n[elf ] Segment at 0x400000: 0x800 bytes from disk, 0x800 in memory\n[elf ] Entry point: 0x400000\nWelcome to User Land Shell!\nType 'help' for commands.\n> exec hello.elf\n[cow ] Write to shared page 0xF00000: copied frame 0x279000 -> 0x27E000\nExecuting: hello.elf\n[elf ] Loading hello.elf\n[elf ] Segment at 0x400000: 0x983 bytes from disk, 0x69E0 in memory\n[cow ] Write to shared page 0x400000: copied frame 0x277000 -> 0x285000\n[elf ] Entry point: 0x40024C\n=== Producer-Consumer Demo (2P / 4C) ===\nBuffer: 5 | Producers: 2x10 | Consumers: 4x5 | Total: 20 items\n-----------------------------------------\n[P1] Produced: 100\n[P1] Produced: 101\n[P1] Produced: 102\n[P1] Produced: 103\n[P1] Produced: 104\n  [C1] Consumed: 100\n  [C1] Consumed: 101\n  [C1] Consumed: 102\n  [C1] Consumed: 103\n  [C1] Consumed: 104\n  [C1] Done.\n[P1] Produced: 105\n[P1] Produced: 106\n[P1] Produced: 107\n[P1] Produced: 108\n[P2] Produced: 200\n[proc] PID 5 exited with code 0\n  [C2] Consumed: 105\n  [C2] Consumed: 106\n  [C2] Consumed: 107\n  [C3] Consumed: 108\n  [C4] Consumed: 200\n[P1] Produced: 109\n[P1] Done.\n[proc] PID 3 exited with code 0\n[P2] Produced: 201\n[P2] Produced: 202\n[P2] Produced: 203\n[P2] Produced: 204\n  [C2] Consumed: 109\n  [C2] Consumed: 201\n  [C2] Done.\n[proc] PID 6 exited with code 0\n  [C4] Consumed: 202\n  [C4] Consumed: 203\n[P2] Produced: 205\n[P2] Produced: 206\n[P2] Produced: 207\n[P2] Produced: 208\n  [C3] Consumed: 204\n  [C3] Consumed: 205\n  [C3] Consumed: 206\n  [C3] Consumed: 207\n  [C3] Done.\n[proc] PID 7 exited with code 0\n  [C4] Consumed: 208\n[P2] Produced: 209\n[P2] Done.\n[proc] PID 4 exited with code 0\n  [C4] Consumed: 209\n  [C4] Done.\n[proc] PID 8 exited with code 0\n-----------------------------------------\n=== All threads finished. 20/20 items ===\n[proc] PID 2 exited with code 0\nChild exited with code: 0\n> ",
+    "t_created": 0.233,
+    "t_started": 0.51,
+    "t_finished": 1.293
    },
    {
     "id": 3,
@@ -285,14 +285,14 @@
     "exit_code": 3,
     "detail": "process 2 exited with code 3",
     "binary": "fail.elf",
-    "slot": 1,
-    "created_at": "2026-10-13T00:22:27.888160+00:00",
-    "started_at": "2026-10-13T00:22:28.732560+00:00",
-    "finished_at": "2026-10-13T00:22:29.119823+00:00",
+    "slot": 2,
+    "created_at": "2026-10-13T00:29:07.045173+00:00",
+    "started_at": "2026-10-13T00:29:07.765414+00:00",
+    "finished_at": "2026-10-13T00:29:08.099069+00:00",
     "serial_log": "MyOS - a 32-bit x86 kernel built from scratch\n[boot] Kernel entered at 0xC0100CEA (higher half, loaded at 0x100000)\n[cpu ] PIC remapped: IRQ 0-15 -> INT 32-47\n[cpu ] IDT loaded: #DE, #PF, timer, keyboard, syscall gate INT 0x80\n[cpu ] GDT and TSS loaded: Ring 0 kernel, Ring 3 user segments\n[pit ] Timer at 50 Hz: each tick preempts into the scheduler\n[vmm ] Direct-mapped physical 0-128 MB at 0xC0000000\n[vmm ] VGA text buffer mapped at 0xC00B8000\n[pmm ] BIOS E820 memory map: 7 entries\n[pmm ] RAM: 127 MB = 32736 frames of 4 KB, tracked in a bitmap\n[pmm ] Reserved frames 0x0 - 0x176000: BIOS area and kernel image\n[pmm ] Reserved frames 0x7FDC000 - 0x7FE0000: kernel stack\n[pmm ] Free: 32358 frames\n[pmm ] Self-test: allocated frame 0x176000, freed it\n[heap] Kernel heap at 0xC0176000, 1 MB, doubly linked free list\n[heap] Self-test: 3 freed blocks coalesced into one\n[ata ] Read sector 0 over PIO: boot signature 0x55 0xAA\n[fs  ] SimpleFS mounted: 20480 blocks\n[proc] Multitasking on: the kernel itself is PID 0 (idle)\n[proc] Created PID 1\n[proc] PID 1: loading the user shell, then IRET to Ring 3\n[elf ] Loading shell.elf\n[elf ] Segment at 0x400000: 0x800 bytes from disk, 0x800 in memory\n[elf ] Entry point: 0x400000\nWelcome to User Land Shell!\nType 'help' for commands.\n> exec hello.elf\n[cow ] Write to shared page 0xF00000: copied frame 0x279000 -> 0x27E000\nExecuting: hello.elf\n[elf ] Loading hello.elf\n[elf ] Segment at 0x400000: 0x4C0 bytes from disk, 0x4C0 in memory\n[cow ] Write to shared page 0x400000: copied frame 0x277000 -> 0x27F000\n[elf ] Entry point: 0x400000\nexiting with code 3\n[proc] PID 2 exited with code 3\nChild exited with code: 3\n> ",
-    "t_created": 0.51,
-    "t_started": 1.354,
-    "t_finished": 1.741
+    "t_created": 0.453,
+    "t_started": 1.173,
+    "t_finished": 1.507
    },
    {
     "id": 4,
@@ -300,14 +300,14 @@
     "exit_code": null,
     "detail": "kernel halted: Page Fault",
     "binary": "crash.elf",
-    "slot": 2,
-    "created_at": "2026-10-13T00:22:28.097703+00:00",
-    "started_at": "2026-10-13T00:22:29.026022+00:00",
-    "finished_at": "2026-10-13T00:22:29.523004+00:00",
+    "slot": 1,
+    "created_at": "2026-10-13T00:29:07.240871+00:00",
+    "started_at": "2026-10-13T00:29:07.909634+00:00",
+    "finished_at": "2026-10-13T00:29:08.257648+00:00",
     "serial_log": "MyOS - a 32-bit x86 kernel built from scratch\n[boot] Kernel entered at 0xC0100CEA (higher half, loaded at 0x100000)\n[cpu ] PIC remapped: IRQ 0-15 -> INT 32-47\n[cpu ] IDT loaded: #DE, #PF, timer, keyboard, syscall gate INT 0x80\n[cpu ] GDT and TSS loaded: Ring 0 kernel, Ring 3 user segments\n[pit ] Timer at 50 Hz: each tick preempts into the scheduler\n[vmm ] Direct-mapped physical 0-128 MB at 0xC0000000\n[vmm ] VGA text buffer mapped at 0xC00B8000\n[pmm ] BIOS E820 memory map: 7 entries\n[pmm ] RAM: 127 MB = 32736 frames of 4 KB, tracked in a bitmap\n[pmm ] Reserved frames 0x0 - 0x176000: BIOS area and kernel image\n[pmm ] Reserved frames 0x7FDC000 - 0x7FE0000: kernel stack\n[pmm ] Free: 32358 frames\n[pmm ] Self-test: allocated frame 0x176000, freed it\n[heap] Kernel heap at 0xC0176000, 1 MB, doubly linked free list\n[heap] Self-test: 3 freed blocks coalesced into one\n[ata ] Read sector 0 over PIO: boot signature 0x55 0xAA\n[fs  ] SimpleFS mounted: 20480 blocks\n[proc] Multitasking on: the kernel itself is PID 0 (idle)\n[proc] Created PID 1\n[proc] PID 1: loading the user shell, then IRET to Ring 3\n[elf ] Loading shell.elf\n[elf ] Segment at 0x400000: 0x800 bytes from disk, 0x800 in memory\n[elf ] Entry point: 0x400000\nWelcome to User Land Shell!\nType 'help' for commands.\n> exec hello.elf\n[cow ] Write to shared page 0xF00000: copied frame 0x279000 -> 0x27E000\nExecuting: hello.elf\n[elf ] Loading hello.elf\n[elf ] Segment at 0x400000: 0x4CB bytes from disk, 0x4CB in memory\n[cow ] Write to shared page 0x400000: copied frame 0x277000 -> 0x27F000\n[elf ] Entry point: 0x400000\nabout to null-deref\n\n[!] EXCEPTION: Page Fault!\nFaulting Address: 0x0\nError Code: 0x6 (NotPresent Write User )\nSystem Halted.\n",
-    "t_created": 0.719,
-    "t_started": 1.648,
-    "t_finished": 2.145
+    "t_created": 0.649,
+    "t_started": 1.318,
+    "t_finished": 1.666
    },
    {
     "id": 5,
@@ -315,14 +315,14 @@
     "exit_code": null,
     "detail": "no verdict within 3.0s (while running the job)",
     "binary": "spin.elf",
-    "slot": 1,
-    "created_at": "2026-10-13T00:22:28.315609+00:00",
-    "started_at": "2026-10-13T00:22:29.139955+00:00",
-    "finished_at": "2026-10-13T00:22:32.488145+00:00",
+    "slot": 2,
+    "created_at": "2026-10-13T00:29:07.437670+00:00",
+    "started_at": "2026-10-13T00:29:08.122939+00:00",
+    "finished_at": "2026-10-13T00:29:11.363953+00:00",
     "serial_log": "MyOS - a 32-bit x86 kernel built from scratch\n[boot] Kernel entered at 0xC0100CEA (higher half, loaded at 0x100000)\n[cpu ] PIC remapped: IRQ 0-15 -> INT 32-47\n[cpu ] IDT loaded: #DE, #PF, timer, keyboard, syscall gate INT 0x80\n[cpu ] GDT and TSS loaded: Ring 0 kernel, Ring 3 user segments\n[pit ] Timer at 50 Hz: each tick preempts into the scheduler\n[vmm ] Direct-mapped physical 0-128 MB at 0xC0000000\n[vmm ] VGA text buffer mapped at 0xC00B8000\n[pmm ] BIOS E820 memory map: 7 entries\n[pmm ] RAM: 127 MB = 32736 frames of 4 KB, tracked in a bitmap\n[pmm ] Reserved frames 0x0 - 0x176000: BIOS area and kernel image\n[pmm ] Reserved frames 0x7FDC000 - 0x7FE0000: kernel stack\n[pmm ] Free: 32358 frames\n[pmm ] Self-test: allocated frame 0x176000, freed it\n[heap] Kernel heap at 0xC0176000, 1 MB, doubly linked free list\n[heap] Self-test: 3 freed blocks coalesced into one\n[ata ] Read sector 0 over PIO: boot signature 0x55 0xAA\n[fs  ] SimpleFS mounted: 20480 blocks\n[proc] Multitasking on: the kernel itself is PID 0 (idle)\n[proc] Created PID 1\n[proc] PID 1: loading the user shell, then IRET to Ring 3\n[elf ] Loading shell.elf\n[elf ] Segment at 0x400000: 0x800 bytes from disk, 0x800 in memory\n[elf ] Entry point: 0x400000\nWelcome to User Land Shell!\nType 'help' for commands.\n> exec hello.elf\n[cow ] Write to shared page 0xF00000: copied frame 0x279000 -> 0x27E000\nExecuting: hello.elf\n[elf ] Loading hello.elf\n[elf ] Segment at 0x400000: 0x4A9 bytes from disk, 0x4A9 in memory\n[cow ] Write to shared page 0x400000: copied frame 0x277000 -> 0x27F000\n[elf ] Entry point: 0x400000\nspinning forever\n",
-    "t_created": 0.937,
-    "t_started": 1.761,
-    "t_finished": 5.11
+    "t_created": 0.846,
+    "t_started": 1.531,
+    "t_finished": 4.772
    },
    {
     "id": 6,
@@ -330,14 +330,14 @@
     "exit_code": 1,
     "detail": "process 2 exited with code 1 (ELF loader: Invalid ELF Magic.)",
     "binary": "corrupt.elf",
-    "slot": 2,
-    "created_at": "2026-10-13T00:22:28.532661+00:00",
-    "started_at": "2026-10-13T00:22:29.544300+00:00",
-    "finished_at": "2026-10-13T00:22:30.063936+00:00",
+    "slot": 1,
+    "created_at": "2026-10-13T00:29:07.628355+00:00",
+    "started_at": "2026-10-13T00:29:08.279246+00:00",
+    "finished_at": "2026-10-13T00:29:08.636880+00:00",
     "serial_log": "MyOS - a 32-bit x86 kernel built from scratch\n[boot] Kernel entered at 0xC0100CEA (higher half, loaded at 0x100000)\n[cpu ] PIC remapped: IRQ 0-15 -> INT 32-47\n[cpu ] IDT loaded: #DE, #PF, timer, keyboard, syscall gate INT 0x80\n[cpu ] GDT and TSS loaded: Ring 0 kernel, Ring 3 user segments\n[pit ] Timer at 50 Hz: each tick preempts into the scheduler\n[vmm ] Direct-mapped physical 0-128 MB at 0xC0000000\n[vmm ] VGA text buffer mapped at 0xC00B8000\n[pmm ] BIOS E820 memory map: 7 entries\n[pmm ] RAM: 127 MB = 32736 frames of 4 KB, tracked in a bitmap\n[pmm ] Reserved frames 0x0 - 0x176000: BIOS area and kernel image\n[pmm ] Reserved frames 0x7FDC000 - 0x7FE0000: kernel stack\n[pmm ] Free: 32358 frames\n[pmm ] Self-test: allocated frame 0x176000, freed it\n[heap] Kernel heap at 0xC0176000, 1 MB, doubly linked free list\n[heap] Self-test: 3 freed blocks coalesced into one\n[ata ] Read sector 0 over PIO: boot signature 0x55 0xAA\n[fs  ] SimpleFS mounted: 20480 blocks\n[proc] Multitasking on: the kernel itself is PID 0 (idle)\n[proc] Created PID 1\n[proc] PID 1: loading the user shell, then IRET to Ring 3\n[elf ] Loading shell.elf\n[elf ] Segment at 0x400000: 0x800 bytes from disk, 0x800 in memory\n[elf ] Entry point: 0x400000\nWelcome to User Land Shell!\nType 'help' for commands.\n> exec hello.elf\n[cow ] Write to shared page 0xF00000: copied frame 0x279000 -> 0x27E000\nExecuting: hello.elf\n[elf ] Loading hello.elf\n[elf ] Error: Invalid ELF Magic.\nFailed to execute program.\n[proc] PID 2 exited with code 1\nChild exited with code: 1\n> ",
-    "t_created": 1.154,
-    "t_started": 2.166,
-    "t_finished": 2.685
+    "t_created": 1.036,
+    "t_started": 1.687,
+    "t_finished": 2.045
    }
   ]
  },
@@ -366,361 +366,7 @@
       {
        "t": 0.0,
        "kind": "start",
-       "worker": "W3",
-       "slot": 1,
-       "job": 1,
-       "status": null
-      },
-      {
-       "t": 0.01,
-       "kind": "start",
-       "worker": "W4",
-       "slot": 1,
-       "job": 1,
-       "status": null
-      },
-      {
-       "t": 0.013,
-       "kind": "start",
        "worker": "W1",
-       "slot": 1,
-       "job": 1,
-       "status": null
-      },
-      {
-       "t": 0.016,
-       "kind": "start",
-       "worker": "W2",
-       "slot": 1,
-       "job": 1,
-       "status": null
-      },
-      {
-       "t": 0.373,
-       "kind": "end",
-       "worker": "W3",
-       "slot": 1,
-       "job": 1,
-       "status": "success"
-      },
-      {
-       "t": 0.435,
-       "kind": "start",
-       "worker": "W3",
-       "slot": 1,
-       "job": 2,
-       "status": null
-      },
-      {
-       "t": 0.693,
-       "kind": "end",
-       "worker": "W4",
-       "slot": 1,
-       "job": 1,
-       "status": "success"
-      },
-      {
-       "t": 0.759,
-       "kind": "start",
-       "worker": "W4",
-       "slot": 2,
-       "job": 3,
-       "status": null
-      },
-      {
-       "t": 0.814,
-       "kind": "end",
-       "worker": "W1",
-       "slot": 1,
-       "job": 1,
-       "status": "success"
-      },
-      {
-       "t": 0.897,
-       "kind": "end",
-       "worker": "W2",
-       "slot": 1,
-       "job": 1,
-       "status": "success"
-      },
-      {
-       "t": 1.316,
-       "kind": "end",
-       "worker": "W4",
-       "slot": 2,
-       "job": 3,
-       "status": "success"
-      },
-      {
-       "t": 1.38,
-       "kind": "start",
-       "worker": "W4",
-       "slot": 2,
-       "job": 4,
-       "status": null
-      },
-      {
-       "t": 1.387,
-       "kind": "start",
-       "worker": "W2",
-       "slot": 2,
-       "job": 4,
-       "status": null
-      },
-      {
-       "t": 1.391,
-       "kind": "start",
-       "worker": "W1",
-       "slot": 2,
-       "job": 4,
-       "status": null
-      },
-      {
-       "t": 1.522,
-       "kind": "end",
-       "worker": "W3",
-       "slot": 1,
-       "job": 2,
-       "status": "success"
-      },
-      {
-       "t": 1.932,
-       "kind": "end",
-       "worker": "W4",
-       "slot": 2,
-       "job": 4,
-       "status": "success"
-      },
-      {
-       "t": 2.038,
-       "kind": "end",
-       "worker": "W2",
-       "slot": 2,
-       "job": 4,
-       "status": "success"
-      },
-      {
-       "t": 2.142,
-       "kind": "end",
-       "worker": "W1",
-       "slot": 2,
-       "job": 4,
-       "status": "success"
-      }
-     ],
-     "timeline": [
-      "  + 0.000s  W3  START job 1 on slot 1   running=1",
-      "  + 0.010s  W4  START job 1 on slot 1   running=2  <-- slot 1 already held by W3; job 1 already ran/running",
-      "  + 0.013s  W1  START job 1 on slot 1   running=3  <-- OVER CAPACITY 3 > 2; slot 1 already held by W3,W4; job 1 already ran/running",
-      "  + 0.016s  W2  START job 1 on slot 1   running=4  <-- OVER CAPACITY 4 > 2; slot 1 already held by W3,W4,W1; job 1 already ran/running",
-      "  + 0.373s  W3  END   job 1 on slot 1   running=3  (success)",
-      "  + 0.435s  W3  START job 2 on slot 1   running=4  <-- OVER CAPACITY 4 > 2; slot 1 already held by W4,W1,W2",
-      "  + 0.693s  W4  END   job 1 on slot 1   running=3  (success)",
-      "  + 0.759s  W4  START job 3 on slot 2   running=4  <-- OVER CAPACITY 4 > 2",
-      "  + 0.814s  W1  END   job 1 on slot 1   running=3  (success)",
-      "  + 0.897s  W2  END   job 1 on slot 1   running=2  (success)",
-      "  + 1.316s  W4  END   job 3 on slot 2   running=1  (success)",
-      "  + 1.380s  W4  START job 4 on slot 2   running=2",
-      "  + 1.387s  W2  START job 4 on slot 2   running=3  <-- OVER CAPACITY 3 > 2; slot 2 already held by W4; job 4 already ran/running",
-      "  + 1.391s  W1  START job 4 on slot 2   running=4  <-- OVER CAPACITY 4 > 2; slot 2 already held by W4,W2; job 4 already ran/running",
-      "  + 1.522s  W3  END   job 2 on slot 1   running=3  (success)",
-      "  + 1.932s  W4  END   job 4 on slot 2   running=2  (success)",
-      "  + 2.038s  W2  END   job 4 on slot 2   running=1  (success)",
-      "  + 2.142s  W1  END   job 4 on slot 2   running=0  (success)"
-     ]
-    },
-    {
-     "round": 2,
-     "violated": true,
-     "peak": 4,
-     "over_capacity_moments": 5,
-     "double_booked_claims": 6,
-     "duplicate_runs": 5,
-     "executions": 9,
-     "db_max_busy_slots": 2,
-     "db_max_running_jobs": 2,
-     "events": [
-      {
-       "t": 0.0,
-       "kind": "start",
-       "worker": "W2",
-       "slot": 1,
-       "job": 1,
-       "status": null
-      },
-      {
-       "t": 0.002,
-       "kind": "start",
-       "worker": "W4",
-       "slot": 1,
-       "job": 1,
-       "status": null
-      },
-      {
-       "t": 0.005,
-       "kind": "start",
-       "worker": "W1",
-       "slot": 1,
-       "job": 1,
-       "status": null
-      },
-      {
-       "t": 0.007,
-       "kind": "start",
-       "worker": "W3",
-       "slot": 1,
-       "job": 1,
-       "status": null
-      },
-      {
-       "t": 0.346,
-       "kind": "end",
-       "worker": "W4",
-       "slot": 1,
-       "job": 1,
-       "status": "success"
-      },
-      {
-       "t": 0.408,
-       "kind": "start",
-       "worker": "W4",
-       "slot": 1,
-       "job": 2,
-       "status": null
-      },
-      {
-       "t": 0.514,
-       "kind": "end",
-       "worker": "W1",
-       "slot": 1,
-       "job": 1,
-       "status": "success"
-      },
-      {
-       "t": 0.579,
-       "kind": "start",
-       "worker": "W1",
-       "slot": 2,
-       "job": 3,
-       "status": null
-      },
-      {
-       "t": 0.673,
-       "kind": "end",
-       "worker": "W2",
-       "slot": 1,
-       "job": 1,
-       "status": "success"
-      },
-      {
-       "t": 0.802,
-       "kind": "end",
-       "worker": "W3",
-       "slot": 1,
-       "job": 1,
-       "status": "success"
-      },
-      {
-       "t": 1.079,
-       "kind": "end",
-       "worker": "W1",
-       "slot": 2,
-       "job": 3,
-       "status": "success"
-      },
-      {
-       "t": 1.139,
-       "kind": "start",
-       "worker": "W1",
-       "slot": 2,
-       "job": 4,
-       "status": null
-      },
-      {
-       "t": 1.147,
-       "kind": "end",
-       "worker": "W4",
-       "slot": 1,
-       "job": 2,
-       "status": "success"
-      },
-      {
-       "t": 1.153,
-       "kind": "start",
-       "worker": "W3",
-       "slot": 2,
-       "job": 4,
-       "status": null
-      },
-      {
-       "t": 1.157,
-       "kind": "start",
-       "worker": "W2",
-       "slot": 2,
-       "job": 4,
-       "status": null
-      },
-      {
-       "t": 1.674,
-       "kind": "end",
-       "worker": "W1",
-       "slot": 2,
-       "job": 4,
-       "status": "success"
-      },
-      {
-       "t": 2.011,
-       "kind": "end",
-       "worker": "W3",
-       "slot": 2,
-       "job": 4,
-       "status": "success"
-      },
-      {
-       "t": 2.077,
-       "kind": "end",
-       "worker": "W2",
-       "slot": 2,
-       "job": 4,
-       "status": "success"
-      }
-     ],
-     "timeline": [
-      "  + 0.000s  W2  START job 1 on slot 1   running=1",
-      "  + 0.002s  W4  START job 1 on slot 1   running=2  <-- slot 1 already held by W2; job 1 already ran/running",
-      "  + 0.005s  W1  START job 1 on slot 1   running=3  <-- OVER CAPACITY 3 > 2; slot 1 already held by W2,W4; job 1 already ran/running",
-      "  + 0.007s  W3  START job 1 on slot 1   running=4  <-- OVER CAPACITY 4 > 2; slot 1 already held by W2,W4,W1; job 1 already ran/running",
-      "  + 0.346s  W4  END   job 1 on slot 1   running=3  (success)",
-      "  + 0.408s  W4  START job 2 on slot 1   running=4  <-- OVER CAPACITY 4 > 2; slot 1 already held by W2,W1,W3",
-      "  + 0.514s  W1  END   job 1 on slot 1   running=3  (success)",
-      "  + 0.579s  W1  START job 3 on slot 2   running=4  <-- OVER CAPACITY 4 > 2",
-      "  + 0.673s  W2  END   job 1 on slot 1   running=3  (success)",
-      "  + 0.802s  W3  END   job 1 on slot 1   running=2  (success)",
-      "  + 1.079s  W1  END   job 3 on slot 2   running=1  (success)",
-      "  + 1.139s  W1  START job 4 on slot 2   running=2",
-      "  + 1.147s  W4  END   job 2 on slot 1   running=1  (success)",
-      "  + 1.153s  W3  START job 4 on slot 2   running=2  <-- slot 2 already held by W1; job 4 already ran/running",
-      "  + 1.157s  W2  START job 4 on slot 2   running=3  <-- OVER CAPACITY 3 > 2; slot 2 already held by W1,W3; job 4 already ran/running",
-      "  + 1.674s  W1  END   job 4 on slot 2   running=2  (success)",
-      "  + 2.011s  W3  END   job 4 on slot 2   running=1  (success)",
-      "  + 2.077s  W2  END   job 4 on slot 2   running=0  (success)"
-     ]
-    },
-    {
-     "round": 3,
-     "violated": true,
-     "peak": 4,
-     "over_capacity_moments": 6,
-     "double_booked_claims": 6,
-     "duplicate_runs": 5,
-     "executions": 9,
-     "db_max_busy_slots": 2,
-     "db_max_running_jobs": 2,
-     "events": [
-      {
-       "t": 0.0,
-       "kind": "start",
-       "worker": "W2",
        "slot": 1,
        "job": 1,
        "status": null
@@ -736,7 +382,7 @@
       {
        "t": 0.004,
        "kind": "start",
-       "worker": "W1",
+       "worker": "W3",
        "slot": 1,
        "job": 1,
        "status": null
@@ -744,53 +390,29 @@
       {
        "t": 0.007,
        "kind": "start",
-       "worker": "W3",
+       "worker": "W2",
        "slot": 1,
        "job": 1,
        "status": null
       },
       {
-       "t": 0.348,
+       "t": 0.464,
        "kind": "end",
-       "worker": "W2",
+       "worker": "W4",
        "slot": 1,
        "job": 1,
        "status": "success"
       },
       {
-       "t": 0.41,
+       "t": 0.523,
        "kind": "start",
-       "worker": "W2",
+       "worker": "W4",
        "slot": 1,
        "job": 2,
        "status": null
       },
       {
-       "t": 0.462,
-       "kind": "end",
-       "worker": "W4",
-       "slot": 1,
-       "job": 1,
-       "status": "success"
-      },
-      {
-       "t": 0.527,
-       "kind": "start",
-       "worker": "W4",
-       "slot": 2,
-       "job": 3,
-       "status": null
-      },
-      {
-       "t": 0.617,
-       "kind": "end",
-       "worker": "W1",
-       "slot": 1,
-       "job": 1,
-       "status": "success"
-      },
-      {
-       "t": 0.85,
+       "t": 0.582,
        "kind": "end",
        "worker": "W3",
        "slot": 1,
@@ -798,55 +420,79 @@
        "status": "success"
       },
       {
-       "t": 1.058,
-       "kind": "end",
-       "worker": "W4",
-       "slot": 2,
-       "job": 3,
-       "status": "success"
-      },
-      {
-       "t": 1.123,
-       "kind": "start",
-       "worker": "W4",
-       "slot": 2,
-       "job": 4,
-       "status": null
-      },
-      {
-       "t": 1.125,
-       "kind": "start",
-       "worker": "W1",
-       "slot": 2,
-       "job": 4,
-       "status": null
-      },
-      {
-       "t": 1.127,
+       "t": 0.646,
        "kind": "start",
        "worker": "W3",
        "slot": 2,
-       "job": 4,
+       "job": 3,
        "status": null
       },
       {
-       "t": 1.173,
+       "t": 0.692,
+       "kind": "end",
+       "worker": "W1",
+       "slot": 1,
+       "job": 1,
+       "status": "success"
+      },
+      {
+       "t": 0.907,
        "kind": "end",
        "worker": "W2",
+       "slot": 1,
+       "job": 1,
+       "status": "success"
+      },
+      {
+       "t": 1.168,
+       "kind": "end",
+       "worker": "W3",
+       "slot": 2,
+       "job": 3,
+       "status": "success"
+      },
+      {
+       "t": 1.231,
+       "kind": "start",
+       "worker": "W3",
+       "slot": 2,
+       "job": 4,
+       "status": null
+      },
+      {
+       "t": 1.248,
+       "kind": "start",
+       "worker": "W1",
+       "slot": 2,
+       "job": 4,
+       "status": null
+      },
+      {
+       "t": 1.25,
+       "kind": "start",
+       "worker": "W2",
+       "slot": 2,
+       "job": 4,
+       "status": null
+      },
+      {
+       "t": 1.264,
+       "kind": "end",
+       "worker": "W4",
        "slot": 1,
        "job": 2,
        "status": "success"
       },
       {
-       "t": 1.714,
+       "t": 1.761,
        "kind": "end",
-       "worker": "W4",
+       "worker": "W3",
        "slot": 2,
        "job": 4,
        "status": "success"
       },
       {
-       "t": 1.789,
+       "t": 1.913,
        "kind": "end",
        "worker": "W1",
        "slot": 2,
@@ -854,33 +500,405 @@
        "status": "success"
       },
       {
-       "t": 1.903,
+       "t": 2.249,
        "kind": "end",
-       "worker": "W3",
+       "worker": "W2",
        "slot": 2,
        "job": 4,
        "status": "success"
       }
      ],
      "timeline": [
-      "  + 0.000s  W2  START job 1 on slot 1   running=1",
-      "  + 0.002s  W4  START job 1 on slot 1   running=2  <-- slot 1 already held by W2; job 1 already ran/running",
-      "  + 0.004s  W1  START job 1 on slot 1   running=3  <-- OVER CAPACITY 3 > 2; slot 1 already held by W2,W4; job 1 already ran/running",
-      "  + 0.007s  W3  START job 1 on slot 1   running=4  <-- OVER CAPACITY 4 > 2; slot 1 already held by W2,W4,W1; job 1 already ran/running",
-      "  + 0.348s  W2  END   job 1 on slot 1   running=3  (success)",
-      "  + 0.410s  W2  START job 2 on slot 1   running=4  <-- OVER CAPACITY 4 > 2; slot 1 already held by W4,W1,W3",
-      "  + 0.462s  W4  END   job 1 on slot 1   running=3  (success)",
-      "  + 0.527s  W4  START job 3 on slot 2   running=4  <-- OVER CAPACITY 4 > 2",
-      "  + 0.617s  W1  END   job 1 on slot 1   running=3  (success)",
-      "  + 0.850s  W3  END   job 1 on slot 1   running=2  (success)",
-      "  + 1.058s  W4  END   job 3 on slot 2   running=1  (success)",
-      "  + 1.123s  W4  START job 4 on slot 2   running=2",
-      "  + 1.125s  W1  START job 4 on slot 2   running=3  <-- OVER CAPACITY 3 > 2; slot 2 already held by W4; job 4 already ran/running",
-      "  + 1.127s  W3  START job 4 on slot 2   running=4  <-- OVER CAPACITY 4 > 2; slot 2 already held by W4,W1; job 4 already ran/running",
-      "  + 1.173s  W2  END   job 2 on slot 1   running=3  (success)",
-      "  + 1.714s  W4  END   job 4 on slot 2   running=2  (success)",
-      "  + 1.789s  W1  END   job 4 on slot 2   running=1  (success)",
-      "  + 1.903s  W3  END   job 4 on slot 2   running=0  (success)"
+      "  + 0.000s  W1  START job 1 on slot 1   running=1",
+      "  + 0.002s  W4  START job 1 on slot 1   running=2  <-- slot 1 already held by W1; job 1 already ran/running",
+      "  + 0.004s  W3  START job 1 on slot 1   running=3  <-- OVER CAPACITY 3 > 2; slot 1 already held by W1,W4; job 1 already ran/running",
+      "  + 0.007s  W2  START job 1 on slot 1   running=4  <-- OVER CAPACITY 4 > 2; slot 1 already held by W1,W4,W3; job 1 already ran/running",
+      "  + 0.464s  W4  END   job 1 on slot 1   running=3  (success)",
+      "  + 0.523s  W4  START job 2 on slot 1   running=4  <-- OVER CAPACITY 4 > 2; slot 1 already held by W1,W3,W2",
+      "  + 0.582s  W3  END   job 1 on slot 1   running=3  (success)",
+      "  + 0.646s  W3  START job 3 on slot 2   running=4  <-- OVER CAPACITY 4 > 2",
+      "  + 0.692s  W1  END   job 1 on slot 1   running=3  (success)",
+      "  + 0.907s  W2  END   job 1 on slot 1   running=2  (success)",
+      "  + 1.168s  W3  END   job 3 on slot 2   running=1  (success)",
+      "  + 1.231s  W3  START job 4 on slot 2   running=2",
+      "  + 1.248s  W1  START job 4 on slot 2   running=3  <-- OVER CAPACITY 3 > 2; slot 2 already held by W3; job 4 already ran/running",
+      "  + 1.250s  W2  START job 4 on slot 2   running=4  <-- OVER CAPACITY 4 > 2; slot 2 already held by W3,W1; job 4 already ran/running",
+      "  + 1.264s  W4  END   job 2 on slot 1   running=3  (success)",
+      "  + 1.761s  W3  END   job 4 on slot 2   running=2  (success)",
+      "  + 1.913s  W1  END   job 4 on slot 2   running=1  (success)",
+      "  + 2.249s  W2  END   job 4 on slot 2   running=0  (success)"
+     ]
+    },
+    {
+     "round": 2,
+     "violated": true,
+     "peak": 4,
+     "over_capacity_moments": 6,
+     "double_booked_claims": 6,
+     "duplicate_runs": 5,
+     "executions": 9,
+     "db_max_busy_slots": 2,
+     "db_max_running_jobs": 2,
+     "events": [
+      {
+       "t": 0.0,
+       "kind": "start",
+       "worker": "W3",
+       "slot": 1,
+       "job": 1,
+       "status": null
+      },
+      {
+       "t": 0.002,
+       "kind": "start",
+       "worker": "W1",
+       "slot": 1,
+       "job": 1,
+       "status": null
+      },
+      {
+       "t": 0.005,
+       "kind": "start",
+       "worker": "W4",
+       "slot": 1,
+       "job": 1,
+       "status": null
+      },
+      {
+       "t": 0.008,
+       "kind": "start",
+       "worker": "W2",
+       "slot": 1,
+       "job": 1,
+       "status": null
+      },
+      {
+       "t": 0.397,
+       "kind": "end",
+       "worker": "W3",
+       "slot": 1,
+       "job": 1,
+       "status": "success"
+      },
+      {
+       "t": 0.461,
+       "kind": "start",
+       "worker": "W3",
+       "slot": 1,
+       "job": 2,
+       "status": null
+      },
+      {
+       "t": 0.557,
+       "kind": "end",
+       "worker": "W1",
+       "slot": 1,
+       "job": 1,
+       "status": "success"
+      },
+      {
+       "t": 0.616,
+       "kind": "start",
+       "worker": "W1",
+       "slot": 2,
+       "job": 3,
+       "status": null
+      },
+      {
+       "t": 0.647,
+       "kind": "end",
+       "worker": "W4",
+       "slot": 1,
+       "job": 1,
+       "status": "success"
+      },
+      {
+       "t": 0.918,
+       "kind": "end",
+       "worker": "W2",
+       "slot": 1,
+       "job": 1,
+       "status": "success"
+      },
+      {
+       "t": 1.121,
+       "kind": "end",
+       "worker": "W1",
+       "slot": 2,
+       "job": 3,
+       "status": "success"
+      },
+      {
+       "t": 1.186,
+       "kind": "start",
+       "worker": "W1",
+       "slot": 2,
+       "job": 4,
+       "status": null
+      },
+      {
+       "t": 1.189,
+       "kind": "start",
+       "worker": "W4",
+       "slot": 2,
+       "job": 4,
+       "status": null
+      },
+      {
+       "t": 1.191,
+       "kind": "end",
+       "worker": "W3",
+       "slot": 1,
+       "job": 2,
+       "status": "success"
+      },
+      {
+       "t": 1.191,
+       "kind": "start",
+       "worker": "W2",
+       "slot": 2,
+       "job": 4,
+       "status": null
+      },
+      {
+       "t": 1.763,
+       "kind": "end",
+       "worker": "W1",
+       "slot": 2,
+       "job": 4,
+       "status": "success"
+      },
+      {
+       "t": 1.869,
+       "kind": "end",
+       "worker": "W4",
+       "slot": 2,
+       "job": 4,
+       "status": "success"
+      },
+      {
+       "t": 2.178,
+       "kind": "end",
+       "worker": "W2",
+       "slot": 2,
+       "job": 4,
+       "status": "success"
+      }
+     ],
+     "timeline": [
+      "  + 0.000s  W3  START job 1 on slot 1   running=1",
+      "  + 0.002s  W1  START job 1 on slot 1   running=2  <-- slot 1 already held by W3; job 1 already ran/running",
+      "  + 0.005s  W4  START job 1 on slot 1   running=3  <-- OVER CAPACITY 3 > 2; slot 1 already held by W3,W1; job 1 already ran/running",
+      "  + 0.008s  W2  START job 1 on slot 1   running=4  <-- OVER CAPACITY 4 > 2; slot 1 already held by W3,W1,W4; job 1 already ran/running",
+      "  + 0.397s  W3  END   job 1 on slot 1   running=3  (success)",
+      "  + 0.461s  W3  START job 2 on slot 1   running=4  <-- OVER CAPACITY 4 > 2; slot 1 already held by W1,W4,W2",
+      "  + 0.557s  W1  END   job 1 on slot 1   running=3  (success)",
+      "  + 0.616s  W1  START job 3 on slot 2   running=4  <-- OVER CAPACITY 4 > 2",
+      "  + 0.647s  W4  END   job 1 on slot 1   running=3  (success)",
+      "  + 0.918s  W2  END   job 1 on slot 1   running=2  (success)",
+      "  + 1.121s  W1  END   job 3 on slot 2   running=1  (success)",
+      "  + 1.186s  W1  START job 4 on slot 2   running=2",
+      "  + 1.189s  W4  START job 4 on slot 2   running=3  <-- OVER CAPACITY 3 > 2; slot 2 already held by W1; job 4 already ran/running",
+      "  + 1.191s  W3  END   job 2 on slot 1   running=2  (success)",
+      "  + 1.191s  W2  START job 4 on slot 2   running=3  <-- OVER CAPACITY 3 > 2; slot 2 already held by W1,W4; job 4 already ran/running",
+      "  + 1.763s  W1  END   job 4 on slot 2   running=2  (success)",
+      "  + 1.869s  W4  END   job 4 on slot 2   running=1  (success)",
+      "  + 2.178s  W2  END   job 4 on slot 2   running=0  (success)"
+     ]
+    },
+    {
+     "round": 3,
+     "violated": true,
+     "peak": 4,
+     "over_capacity_moments": 6,
+     "double_booked_claims": 6,
+     "duplicate_runs": 6,
+     "executions": 10,
+     "db_max_busy_slots": 2,
+     "db_max_running_jobs": 2,
+     "events": [
+      {
+       "t": 0.0,
+       "kind": "start",
+       "worker": "W3",
+       "slot": 1,
+       "job": 1,
+       "status": null
+      },
+      {
+       "t": 0.003,
+       "kind": "start",
+       "worker": "W2",
+       "slot": 1,
+       "job": 1,
+       "status": null
+      },
+      {
+       "t": 0.005,
+       "kind": "start",
+       "worker": "W4",
+       "slot": 1,
+       "job": 1,
+       "status": null
+      },
+      {
+       "t": 0.008,
+       "kind": "start",
+       "worker": "W1",
+       "slot": 1,
+       "job": 1,
+       "status": null
+      },
+      {
+       "t": 0.396,
+       "kind": "end",
+       "worker": "W3",
+       "slot": 1,
+       "job": 1,
+       "status": "success"
+      },
+      {
+       "t": 0.462,
+       "kind": "start",
+       "worker": "W3",
+       "slot": 1,
+       "job": 2,
+       "status": null
+      },
+      {
+       "t": 0.542,
+       "kind": "end",
+       "worker": "W2",
+       "slot": 1,
+       "job": 1,
+       "status": "success"
+      },
+      {
+       "t": 0.603,
+       "kind": "start",
+       "worker": "W2",
+       "slot": 2,
+       "job": 3,
+       "status": null
+      },
+      {
+       "t": 0.651,
+       "kind": "end",
+       "worker": "W4",
+       "slot": 1,
+       "job": 1,
+       "status": "success"
+      },
+      {
+       "t": 0.882,
+       "kind": "end",
+       "worker": "W1",
+       "slot": 1,
+       "job": 1,
+       "status": "success"
+      },
+      {
+       "t": 1.189,
+       "kind": "end",
+       "worker": "W2",
+       "slot": 2,
+       "job": 3,
+       "status": "success"
+      },
+      {
+       "t": 1.21,
+       "kind": "end",
+       "worker": "W3",
+       "slot": 1,
+       "job": 2,
+       "status": "success"
+      },
+      {
+       "t": 1.253,
+       "kind": "start",
+       "worker": "W2",
+       "slot": 2,
+       "job": 4,
+       "status": null
+      },
+      {
+       "t": 1.255,
+       "kind": "start",
+       "worker": "W4",
+       "slot": 2,
+       "job": 4,
+       "status": null
+      },
+      {
+       "t": 1.258,
+       "kind": "start",
+       "worker": "W1",
+       "slot": 2,
+       "job": 4,
+       "status": null
+      },
+      {
+       "t": 1.268,
+       "kind": "start",
+       "worker": "W3",
+       "slot": 1,
+       "job": 4,
+       "status": null
+      },
+      {
+       "t": 1.814,
+       "kind": "end",
+       "worker": "W2",
+       "slot": 2,
+       "job": 4,
+       "status": "success"
+      },
+      {
+       "t": 1.943,
+       "kind": "end",
+       "worker": "W4",
+       "slot": 2,
+       "job": 4,
+       "status": "success"
+      },
+      {
+       "t": 2.204,
+       "kind": "end",
+       "worker": "W1",
+       "slot": 2,
+       "job": 4,
+       "status": "success"
+      },
+      {
+       "t": 2.373,
+       "kind": "end",
+       "worker": "W3",
+       "slot": 1,
+       "job": 4,
+       "status": "success"
+      }
+     ],
+     "timeline": [
+      "  + 0.000s  W3  START job 1 on slot 1   running=1",
+      "  + 0.003s  W2  START job 1 on slot 1   running=2  <-- slot 1 already held by W3; job 1 already ran/running",
+      "  + 0.005s  W4  START job 1 on slot 1   running=3  <-- OVER CAPACITY 3 > 2; slot 1 already held by W3,W2; job 1 already ran/running",
+      "  + 0.008s  W1  START job 1 on slot 1   running=4  <-- OVER CAPACITY 4 > 2; slot 1 already held by W3,W2,W4; job 1 already ran/running",
+      "  + 0.396s  W3  END   job 1 on slot 1   running=3  (success)",
+      "  + 0.462s  W3  START job 2 on slot 1   running=4  <-- OVER CAPACITY 4 > 2; slot 1 already held by W2,W4,W1",
+      "  + 0.542s  W2  END   job 1 on slot 1   running=3  (success)",
+      "  + 0.603s  W2  START job 3 on slot 2   running=4  <-- OVER CAPACITY 4 > 2",
+      "  + 0.651s  W4  END   job 1 on slot 1   running=3  (success)",
+      "  + 0.882s  W1  END   job 1 on slot 1   running=2  (success)",
+      "  + 1.189s  W2  END   job 3 on slot 2   running=1  (success)",
+      "  + 1.210s  W3  END   job 2 on slot 1   running=0  (success)",
+      "  + 1.253s  W2  START job 4 on slot 2   running=1",
+      "  + 1.255s  W4  START job 4 on slot 2   running=2  <-- slot 2 already held by W2; job 4 already ran/running",
+      "  + 1.258s  W1  START job 4 on slot 2   running=3  <-- OVER CAPACITY 3 > 2; slot 2 already held by W2,W4; job 4 already ran/running",
+      "  + 1.268s  W3  START job 4 on slot 1   running=4  <-- OVER CAPACITY 4 > 2; job 4 already ran/running",
+      "  + 1.814s  W2  END   job 4 on slot 2   running=3  (success)",
+      "  + 1.943s  W4  END   job 4 on slot 2   running=2  (success)",
+      "  + 2.204s  W1  END   job 4 on slot 2   running=1  (success)",
+      "  + 2.373s  W3  END   job 4 on slot 1   running=0  (success)"
      ]
     }
    ],
@@ -913,23 +931,7 @@
        "status": null
       },
       {
-       "t": 0.56,
-       "kind": "end",
-       "worker": "W3",
-       "slot": 1,
-       "job": 1,
-       "status": "success"
-      },
-      {
-       "t": 0.62,
-       "kind": "start",
-       "worker": "W3",
-       "slot": 1,
-       "job": 3,
-       "status": null
-      },
-      {
-       "t": 0.626,
+       "t": 0.577,
        "kind": "end",
        "worker": "W2",
        "slot": 2,
@@ -937,26 +939,42 @@
        "status": "success"
       },
       {
-       "t": 0.688,
+       "t": 0.629,
+       "kind": "end",
+       "worker": "W3",
+       "slot": 1,
+       "job": 1,
+       "status": "success"
+      },
+      {
+       "t": 0.637,
        "kind": "start",
        "worker": "W2",
        "slot": 2,
+       "job": 3,
+       "status": null
+      },
+      {
+       "t": 0.688,
+       "kind": "start",
+       "worker": "W4",
+       "slot": 1,
        "job": 4,
        "status": null
       },
       {
-       "t": 1.115,
+       "t": 1.027,
        "kind": "end",
-       "worker": "W3",
-       "slot": 1,
+       "worker": "W2",
+       "slot": 2,
        "job": 3,
        "status": "success"
       },
       {
-       "t": 1.433,
+       "t": 1.416,
        "kind": "end",
-       "worker": "W2",
-       "slot": 2,
+       "worker": "W4",
+       "slot": 1,
        "job": 4,
        "status": "success"
       }
@@ -964,12 +982,12 @@
      "timeline": [
       "  + 0.000s  W2  START job 2 on slot 2   running=1",
       "  + 0.001s  W3  START job 1 on slot 1   running=2",
-      "  + 0.560s  W3  END   job 1 on slot 1   running=1  (success)",
-      "  + 0.620s  W3  START job 3 on slot 1   running=2",
-      "  + 0.626s  W2  END   job 2 on slot 2   running=1  (success)",
-      "  + 0.688s  W2  START job 4 on slot 2   running=2",
-      "  + 1.115s  W3  END   job 3 on slot 1   running=1  (success)",
-      "  + 1.433s  W2  END   job 4 on slot 2   running=0  (success)"
+      "  + 0.577s  W2  END   job 2 on slot 2   running=1  (success)",
+      "  + 0.629s  W3  END   job 1 on slot 1   running=0  (success)",
+      "  + 0.637s  W2  START job 3 on slot 2   running=1",
+      "  + 0.688s  W4  START job 4 on slot 1   running=2",
+      "  + 1.027s  W2  END   job 3 on slot 2   running=1  (success)",
+      "  + 1.416s  W4  END   job 4 on slot 1   running=0  (success)"
      ]
     },
     {
@@ -986,21 +1004,21 @@
       {
        "t": 0.0,
        "kind": "start",
+       "worker": "W2",
+       "slot": 1,
+       "job": 2,
+       "status": null
+      },
+      {
+       "t": 0.0,
+       "kind": "start",
        "worker": "W3",
        "slot": 2,
        "job": 1,
        "status": null
       },
       {
-       "t": 0.001,
-       "kind": "start",
-       "worker": "W1",
-       "slot": 1,
-       "job": 2,
-       "status": null
-      },
-      {
-       "t": 0.512,
+       "t": 0.536,
        "kind": "end",
        "worker": "W3",
        "slot": 2,
@@ -1008,7 +1026,7 @@
        "status": "success"
       },
       {
-       "t": 0.573,
+       "t": 0.597,
        "kind": "start",
        "worker": "W3",
        "slot": 2,
@@ -1016,23 +1034,23 @@
        "status": null
       },
       {
-       "t": 0.574,
+       "t": 0.622,
        "kind": "end",
-       "worker": "W1",
+       "worker": "W2",
        "slot": 1,
        "job": 2,
        "status": "success"
       },
       {
-       "t": 0.631,
+       "t": 0.68,
        "kind": "start",
-       "worker": "W1",
+       "worker": "W2",
        "slot": 1,
        "job": 4,
        "status": null
       },
       {
-       "t": 0.926,
+       "t": 0.951,
        "kind": "end",
        "worker": "W3",
        "slot": 2,
@@ -1040,23 +1058,23 @@
        "status": "success"
       },
       {
-       "t": 1.278,
+       "t": 1.26,
        "kind": "end",
-       "worker": "W1",
+       "worker": "W2",
        "slot": 1,
        "job": 4,
        "status": "success"
       }
      ],
      "timeline": [
-      "  + 0.000s  W3  START job 1 on slot 2   running=1",
-      "  + 0.001s  W1  START job 2 on slot 1   running=2",
-      "  + 0.512s  W3  END   job 1 on slot 2   running=1  (success)",
-      "  + 0.573s  W3  START job 3 on slot 2   running=2",
-      "  + 0.574s  W1  END   job 2 on slot 1   running=1  (success)",
-      "  + 0.631s  W1  START job 4 on slot 1   running=2",
-      "  + 0.926s  W3  END   job 3 on slot 2   running=1  (success)",
-      "  + 1.278s  W1  END   job 4 on slot 1   running=0  (success)"
+      "  + 0.000s  W2  START job 2 on slot 1   running=1",
+      "  + 0.000s  W3  START job 1 on slot 2   running=2",
+      "  + 0.536s  W3  END   job 1 on slot 2   running=1  (success)",
+      "  + 0.597s  W3  START job 3 on slot 2   running=2",
+      "  + 0.622s  W2  END   job 2 on slot 1   running=1  (success)",
+      "  + 0.680s  W2  START job 4 on slot 1   running=2",
+      "  + 0.951s  W3  END   job 3 on slot 2   running=1  (success)",
+      "  + 1.260s  W2  END   job 4 on slot 1   running=0  (success)"
      ]
     },
     {
@@ -1073,7 +1091,7 @@
       {
        "t": 0.0,
        "kind": "start",
-       "worker": "W4",
+       "worker": "W1",
        "slot": 1,
        "job": 1,
        "status": null
@@ -1081,69 +1099,69 @@
       {
        "t": 0.001,
        "kind": "start",
-       "worker": "W3",
+       "worker": "W2",
        "slot": 2,
        "job": 2,
        "status": null
       },
       {
-       "t": 0.412,
+       "t": 0.48,
        "kind": "end",
-       "worker": "W4",
+       "worker": "W1",
        "slot": 1,
        "job": 1,
        "status": "success"
       },
       {
-       "t": 0.47,
+       "t": 0.541,
        "kind": "start",
-       "worker": "W4",
+       "worker": "W1",
        "slot": 1,
        "job": 3,
        "status": null
       },
       {
-       "t": 0.734,
+       "t": 0.568,
        "kind": "end",
-       "worker": "W3",
+       "worker": "W2",
        "slot": 2,
        "job": 2,
        "status": "success"
       },
       {
-       "t": 0.797,
+       "t": 0.641,
        "kind": "start",
-       "worker": "W3",
+       "worker": "W2",
        "slot": 2,
        "job": 4,
        "status": null
       },
       {
-       "t": 0.832,
+       "t": 0.905,
        "kind": "end",
-       "worker": "W4",
+       "worker": "W1",
        "slot": 1,
        "job": 3,
        "status": "success"
       },
       {
-       "t": 1.53,
+       "t": 1.224,
        "kind": "end",
-       "worker": "W3",
+       "worker": "W2",
        "slot": 2,
        "job": 4,
        "status": "success"
       }
      ],
      "timeline": [
-      "  + 0.000s  W4  START job 1 on slot 1   running=1",
-      "  + 0.001s  W3  START job 2 on slot 2   running=2",
-      "  + 0.412s  W4  END   job 1 on slot 1   running=1  (success)",
-      "  + 0.470s  W4  START job 3 on slot 1   running=2",
-      "  + 0.734s  W3  END   job 2 on slot 2   running=1  (success)",
-      "  + 0.797s  W3  START job 4 on slot 2   running=2",
-      "  + 0.832s  W4  END   job 3 on slot 1   running=1  (success)",
-      "  + 1.530s  W3  END   job 4 on slot 2   running=0  (success)"
+      "  + 0.000s  W1  START job 1 on slot 1   running=1",
+      "  + 0.001s  W2  START job 2 on slot 2   running=2",
+      "  + 0.480s  W1  END   job 1 on slot 1   running=1  (success)",
+      "  + 0.541s  W1  START job 3 on slot 1   running=2",
+      "  + 0.568s  W2  END   job 2 on slot 2   running=1  (success)",
+      "  + 0.641s  W2  START job 4 on slot 2   running=2",
+      "  + 0.905s  W1  END   job 3 on slot 1   running=1  (success)",
+      "  + 1.224s  W2  END   job 4 on slot 2   running=0  (success)"
      ]
     }
    ]
@@ -1154,13 +1172,13 @@
     "SELECT `jobs_slot`.`id`, `jobs_slot`.`status`, `jobs_slot`.`current_job_id` FROM `jobs_slot` WHERE `jobs_slot`.`status` = 'idle' ORDER BY `jobs_slot`.`id` ASC LIMIT 1 FOR UPDATE SKIP LOCKED",
     "SELECT `jobs_job`.`id`, `jobs_job`.`uploaded_binary`, `jobs_job`.`original_name`, `jobs_job`.`status`, `jobs_job`.`serial_log`, `jobs_job`.`exit_code`, `jobs_job`.`detail`, `jobs_job`.`slot_id`, `jobs_job`.`created_at`, `jobs_job`.`started_at`, `jobs_job`.`finished_at` FROM `jobs_job` WHERE `jobs_job`.`status` = 'queued' ORDER BY `jobs_job`.`created_at` ASC, `jobs_job`.`id` ASC LIMIT 1 FOR UPDATE SKIP LOCKED",
     "UPDATE `jobs_slot` SET `status` = 'busy', `current_job_id` = 1 WHERE `jobs_slot`.`id` = 1",
-    "UPDATE `jobs_job` SET `status` = 'running', `slot_id` = 1, `started_at` = '2026-10-13 00:22:46.146604' WHERE `jobs_job`.`id` = 1",
+    "UPDATE `jobs_job` SET `status` = 'running', `slot_id` = 1, `started_at` = '2026-10-13 00:29:25.858705' WHERE `jobs_job`.`id` = 1",
     "COMMIT"
    ],
    "release": [
     "BEGIN",
     "UPDATE `jobs_slot` SET `status` = 'idle', `current_job_id` = NULL WHERE (`jobs_slot`.`current_job_id` = 1 AND `jobs_slot`.`id` = 1)",
-    "UPDATE `jobs_job` SET `status` = 'success', `serial_log` = '', `exit_code` = 0, `detail` = '', `finished_at` = '2026-10-13 00:22:46.178124' WHERE (`jobs_job`.`id` = 1 AND `jobs_job`.`status` = 'running')",
+    "UPDATE `jobs_job` SET `status` = 'success', `serial_log` = '', `exit_code` = 0, `detail` = '', `finished_at` = '2026-10-13 00:29:25.891961' WHERE (`jobs_job`.`id` = 1 AND `jobs_job`.`status` = 'running')",
     "COMMIT"
    ],
    "claim_unsafe": [
@@ -1168,7 +1186,7 @@
     "SELECT `jobs_slot`.`id`, `jobs_slot`.`status`, `jobs_slot`.`current_job_id` FROM `jobs_slot` WHERE `jobs_slot`.`status` = 'idle' ORDER BY `jobs_slot`.`id` ASC LIMIT 1",
     "SELECT `jobs_job`.`id`, `jobs_job`.`uploaded_binary`, `jobs_job`.`original_name`, `jobs_job`.`status`, `jobs_job`.`serial_log`, `jobs_job`.`exit_code`, `jobs_job`.`detail`, `jobs_job`.`slot_id`, `jobs_job`.`created_at`, `jobs_job`.`started_at`, `jobs_job`.`finished_at` FROM `jobs_job` WHERE `jobs_job`.`status` = 'queued' ORDER BY `jobs_job`.`created_at` ASC, `jobs_job`.`id` ASC LIMIT 1",
     "UPDATE `jobs_slot` SET `status` = 'busy', `current_job_id` = 1 WHERE `jobs_slot`.`id` = 1",
-    "UPDATE `jobs_job` SET `status` = 'running', `slot_id` = 1, `started_at` = '2026-10-13 00:22:46.174354' WHERE `jobs_job`.`id` = 1",
+    "UPDATE `jobs_job` SET `status` = 'running', `slot_id` = 1, `started_at` = '2026-10-13 00:29:25.889114' WHERE `jobs_job`.`id` = 1",
     "COMMIT"
    ]
   }
