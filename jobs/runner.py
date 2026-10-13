@@ -32,10 +32,15 @@ REPO_ARTIFACTS = [
 
 SHELL_READY = "Type 'help' for commands."
 # Printed by the user shell after wait() returns, i.e. once the process it
-# forked for `exec` has exited. Child threads print their own
-# "[Kernel] Process N exited" lines earlier, so those are not completion.
-CHILD_DONE = "Child exited with code:"
-KERNEL_EXIT = re.compile(r"\[Kernel\] Process (\d+) exited with code (-?\d+)")
+# forked for `exec` has exited, followed by the status wait() gave it. Child
+# threads print their own "[proc] PID N exited" lines earlier, so those are
+# not completion. Only a full line counts, so a half-arrived number is never
+# read as the exit code.
+CHILD_DONE = re.compile(r"Child exited with code: *(-?\d+)?\n")
+# The kernel's sys_exit() line. "[Kernel] Process N exited with code X." is
+# the format before MyOS's tagged boot log (my-os 57c558e).
+KERNEL_EXIT = re.compile(r"(?:\[proc\] PID|\[Kernel\] Process) (\d+) exited with code (-?\d+)")
+ELF_ERROR = re.compile(r"\[(?:elf |ELF)\] Error: ([^\n]+)")
 KERNEL_HALT = "System Halted."
 
 
@@ -147,22 +152,30 @@ def classify(serial: str) -> Verdict | None:
         what = m.group(1).strip() if m else "kernel exception"
         return Verdict("crashed", None, f"kernel halted: {what}")
 
-    done = out.find(CHILD_DONE)
-    if done == -1:
+    done = CHILD_DONE.search(out)
+    if done is None:
         return None
     # The process the shell was waiting on is the last one to exit before
     # the shell prints CHILD_DONE.
-    exits = KERNEL_EXIT.findall(out[:done])
+    exits = KERNEL_EXIT.findall(out[:done.start()])
     if not exits:
         return Verdict("failed", None, "shell reported child exit but no exit code was printed")
     pid, code = exits[-1]
     code = int(code)
+    # Shells since my-os b6a7687 also print the status wait() returned; the
+    # two agree unless the kernel log and the shell disagree, which we
+    # report rather than pick a side silently.
+    if done.group(1) is not None and int(done.group(1)) != code:
+        return Verdict(
+            "failed", code,
+            f"process {pid} exited with code {code}, but the shell reported {done.group(1)}",
+        )
     if code == 0:
         return Verdict("success", 0, f"process {pid} exited with code 0")
     detail = f"process {pid} exited with code {code}"
     # exec() failures (e.g. the kernel's ELF loader rejecting the file)
     # surface only as exit 1 from the shell's child; say why.
-    if m := re.search(r"\[ELF\] Error: ([^\n]+)", out):
+    if m := ELF_ERROR.search(out):
         detail += f" (ELF loader: {m.group(1).strip()})"
     return Verdict("failed", code, detail)
 

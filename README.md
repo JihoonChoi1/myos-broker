@@ -4,9 +4,7 @@
 
 [myOS](../my-os) is a 32-bit x86 operating system I built in C and Assembly. This project uses Python and Django to let users request and manage myOS program runs through the web.
 
-For a detailed explanation of every file and the execution flow, starting with Python and Django basics, read the [complete myOS Broker guide](ARCHITECTURE.ko.md). This README focuses on understanding and running the project. **The other guides are in Korean; the website interface is in English.**
-
-To read the source code from the beginning, start with the [code reading guide](CODE_READING.ko.md). Its seven chapters cover how each file is generated, reproduction commands, Python syntax, Django functions, the corresponding SQL, and how the worker and QEMU fit together.
+This README covers what the project does, how to run it, and why its concurrency design looks the way it does. The website interface is in English.
 
 ## What does this project do?
 
@@ -96,7 +94,7 @@ The default two workers match the two default slots. Adding workers does not add
 
 The development server reloads changes to the web Python code automatically. **For worker code or environment variable changes, press `Ctrl+C` and restart.** The script prevents another `./start.sh` run for the same project, but it does not detect or stop `run_worker` processes started separately.
 
-Commands for running each component separately, along with an explanation, are in the [architecture guide](ARCHITECTURE.ko.md#runbook).
+To run the components separately instead, start the web server with `.venv/bin/python manage.py runserver` and each worker with `.venv/bin/python manage.py run_worker` in its own terminal, with MySQL already running.
 
 ## First-time setup
 
@@ -253,8 +251,9 @@ The basic header check verifies the ELF magic bytes, 32-bit little-endian format
 
 `classify()` in [jobs/runner.py](jobs/runner.py) reads QEMU's output.
 
-- The shell's `Child exited with code:` message indicates that the child program has finished.
-- The exit code comes from the last `[Kernel] Process N exited with code X` before that message. This avoids mistaking the log of an earlier exiting thread for the program's result.
+- The shell's `Child exited with code: N` line indicates that the child program has finished. Only a complete line counts.
+- The exit code comes from the last kernel line `[proc] PID N exited with code X` before that message. This avoids mistaking the log of an earlier exiting thread for the program's result. If the shell's number disagrees with the kernel's, the job is `failed` and `detail` says so.
+- Logs from myOS builds before its tagged boot log (`[Kernel] Process N exited with code X.` and a bare `Child exited with code:`) are still recognized.
 - `System Halted.` is classified as `crashed`, including a halt during boot.
 - If no result can be determined within the time limit, the job is classified as `timeout`.
 - Infrastructure errors such as an `mkfs` failure or a missing QEMU executable are recorded as `failed`, with `detail` beginning with `broker error:` to distinguish them.
@@ -354,6 +353,7 @@ These execution intervals include disk preparation and result storage. They are 
 | `MYSQL_USER` | `broker` | Database user |
 | `MYSQL_PASSWORD` | `broker` | Local development database password |
 | `MYSQL_DEMO_DATABASE` | `myos_broker_demo` | Dedicated concurrency demo database |
+| `MEDIA_ROOT` | `media/` in this project | Where uploaded ELF files are stored |
 
 For example, to change the time limit when starting a worker:
 
@@ -371,7 +371,7 @@ With MySQL running, execute:
 .venv/bin/python manage.py test jobs --noinput
 ```
 
-There are currently **33 tests**. Tests requiring a database use `test_myos_broker` rather than the regular job database. They cover:
+There are currently **38 tests**. Tests requiring a database use `test_myos_broker` rather than the regular job database. They cover:
 
 - Upload size and ELF header checks
 - API, dashboard, and slot views
@@ -379,10 +379,26 @@ There are currently **33 tests**. Tests requiring a database use `test_myos_brok
 - Slot claiming, release, and stale job recovery
 - Runner file size safeguards
 - Database separation for the concurrency demo
+- Agreement between the website demo recording and `classify()`, when `demo/transcript.json` exists
 
-Separately from these tests, six actual QEMU examples, the MySQL concurrency demo, and the flow from browser upload to displayed result were verified. Detailed results are in the [architecture guide's verification record](ARCHITECTURE.ko.md#verification).
+Separately from these tests, six actual QEMU examples, the MySQL concurrency demo, and the flow from browser upload to displayed result were verified.
 
 `./start.sh` was also checked with actual MySQL and QEMU: two workers starting on the default port, a successful `hello.elf` run, clean shutdown, duplicate start prevention, and restarting on another port with `--no-docker`. Sending `Ctrl+C` while `spin.elf` was running still let the worker save a `timeout` result before exiting. Verification jobs #15 and #16 remain in the run history. The path that automatically opens Docker Desktop when it is stopped was not reproduced in this verification.
+
+## Recording the website demo
+
+The personal website shows this project as a replay of a real session, not a live server. [demo/capture_demo.py](demo/capture_demo.py) records it:
+
+```sh
+.venv/bin/python demo/capture_demo.py        # -> demo/transcript.json, about 30 seconds
+```
+
+With MySQL running, it builds myOS, then records two acts against the demo database (`myos_broker_demo`, wiped) and `media/demo/`:
+
+1. **Queue**: the web server and two `run_worker` processes start, eight samples are uploaded over HTTP, and each upload's response, the workers' log lines, and every job's slot, times, verdict and serial log are saved.
+2. **Race**: `test_concurrency.py` rounds in `unsafe` and `locked` mode with real QEMU, plus the SQL each claim function sends.
+
+`"dirty": true` in the output means it was recorded from uncommitted code; commit and record again before publishing. What the website builds from it is described in [demo/WEBSITE_HANDOFF.md](demo/WEBSITE_HANDOFF.md).
 
 ## Troubleshooting
 
@@ -406,4 +422,3 @@ The current setup focuses on local experiments and learning. The job API does no
 
 Result classification also depends on strings in the serial output. A submitted program that prints the same strings can confuse the classifier. A public grading service or a service that runs arbitrary hostile binaries would need additional design for trustworthy classification, host isolation, resource limits, and authentication.
 
-The full file map, database fields, execution flow for one request, and improvement ideas are in [ARCHITECTURE.ko.md](ARCHITECTURE.ko.md).
